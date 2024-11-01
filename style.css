@@ -1,0 +1,39 @@
+#roadmap {
+  position: relative;
+  padding: 0 20px; /* Adjust padding for layout */
+}
+
+#roadmap-step {
+  position: relative;
+  margin: 40px 0; /* Space between steps */
+  padding-left: 40px; /* Space for marker */
+  width: 70vw;
+}
+
+#step-content {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+#step-marker {
+  position: absolute;
+  left: 0;
+  top: 20px; /* Center the marker vertically */
+  width: 16px;
+  height: 16px;
+  background-color: #1d4ed8; /* Marker color */
+  border-radius: 50%; /* Circular marker */
+  border: 2px solid #fff; /* White border around marker */
+  z-index: 10; /* Bring marker above content */
+}
+#service {
+  background: rgba(255, 255, 255, 0.1);
+}
+#project {
+  background: rgba(255, 255, 255, 0.1);
+}
+#touch {
+  background: rgba(255, 255, 255, 0.1);
+}

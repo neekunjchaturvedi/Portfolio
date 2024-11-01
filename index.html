@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body
+    class="dark:bg-black dark:text-white transition duration-500 ease-in-out"
+  >
+    <!-- Navbar -->
+    <nav class="bg-gray-900 p-4 fixed top-0 w-full z-50">
+      <div
+        class="container mx-auto flex justify-around items-center sm:flex-between"
+      >
+        <!-- logo -->
+        <a href="#home" class="text-2xl font-bold text-white"
+          >Neekunj Chaturvedi</a
+        >
+
+        <!-- Menu for larger screens -->
+        <div class="hidden lg:flex space-x-6 text-lg">
+          <a href="#home" class="hover:text-gray-400">Home</a>
+          <a href="#about" class="hover:text-gray-400">About</a>
+          <a href="#projects" class="hover:text-gray-400">Projects</a>
+          <a href="#experience" class="hover:text-gray-400">Experience</a>
+          <a href="#services" class="hover:text-gray-400">Services</a>
+          <a href="#contact" class="hover:text-gray-400">Contact</a>
+        </div>
+
+        <!-- Menu for smaller screens (toggle display on smaller screens) -->
+        <div class="lg:hidden">
+          <button
+            id="navToggle"
+            class="text-white focus:outline-none"
+            onclick="toggleNav()"
+          >
+            <!-- Hamburger Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="w-8 h-8"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Collapsible Menu on Smaller Screens -->
+      <div
+        id="navLinks"
+        class="lg:hidden hidden flex-col items-center space-y-4 p-4 bg-gray-900"
+      >
+        <a href="#home" class="block hover:text-gray-400" onclick="closeNav()"
+          >Home</a
+        >
+        <a href="#about" class="block hover:text-gray-400" onclick="closeNav()"
+          >About</a
+        >
+        <a
+          href="#projects"
+          class="block hover:text-gray-400"
+          onclick="closeNav()"
+          >Projects</a
+        >
+        <a
+          href="#experience"
+          class="block hover:text-gray-400"
+          onclick="closeNav()"
+          >Experience</a
+        >
+        <a
+          href="#services"
+          class="block hover:text-gray-400"
+          onclick="closeNav()"
+          >Services</a
+        >
+        <a
+          href="#contact"
+          class="block hover:text-gray-400"
+          onclick="closeNav()"
+          >Contact</a
+        >
+      </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section
+      id="home"
+      class="h-screen flex flex-col items-center justify-center text-center"
+    >
+      <div class="text-left mb-10">
+        <h1 class="text-4xl font-bold">Neekunj Chaturvedi</h1>
+        <p class="text-gray-400 text-3xl mt-2 text-center">
+          I'm a <span id="typing-text"></span>
+        </p>
+      </div>
+      <div class="flex justify-evenly w-60 text-3xl mb-7">
+        <a
+          href="https://www.linkedin.com/in/neekunj-chaturvedi-293223257/"
+          target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://github.com/neekunjchaturvedi" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/neekunj_chaturvedi_03/"
+          target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="https://x.com/NeekunjC44808" target="_blank"
+          ><i class="fa-brands fa-x-twitter"></i
+        ></a>
+      </div>
+      <div>
+        <button
+          id="abt"
+          class="bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+          onclick="aboutbtn()"
+        >
+          About Me
+        </button>
+        <button
+          class="bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded"
+          id="resume"
+          onclick="openresume()"
+        >
+          My Resume
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+      <h2 class="text-3xl font-semibold text-center mb-8">About Me</h2>
+      <p class="text-center max-w-4xl mx-auto text-gray-300 md:w-xl">
+        I'm a full-stack developer with a solid foundation in the MERN (MongoDB,
+        Express, React, Node.js) stack, bringing hands-on experience in building
+        dynamic, responsive web applications from concept to deployment. My
+        expertise includes designing robust, scalable APIs, and developing
+        engaging front-end interfaces that prioritize user experience. I excel
+        in creating efficient, clean code and enjoy collaborating with teams to
+        bring complex projects to life. I'm dedicated to delivering quality
+        solutions that meet both technical and business goals.
+      </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+      <h2 class="text-3xl font-semibold text-center mb-8">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div
+          class="p-4 rounded-lg shadow-md bg-gray-800 text-white"
+          id="project"
+        >
+          
+          <video
+            src="/assets/topcode.mp4"
+            class="w-full h-64 object-cover rounded-t-lg"
+            autoplay
+            loop
+            muted
+            id="topcode"
+          ></video>
+          
+          <div class="mt-4">
+            <h3 class="text-2xl font-semibold">Top-Code (Code Editor)</h3>
+            <p class="text-gray-400 mt-2">
+              Developed a code editor with multi-language support for compiling
+              and running code. Tools Used: React.js, API integration
+            </p>
+            <div class="flex justify-between">
+              <button
+                id="abt"
+                class="bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4"
+                onclick="topcode()"
+              >
+                Website
+              </button>
+              <button
+                id="abt"
+                class="bg-gray-800 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mt-4"
+                onclick="topcode()"
+              >
+                Github
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-4 rounded-lg shadow-md bg-gray-800 text-white"
+          id="project"
+        >
+          
+          <img
+            src="/assets/topcode.png"
+            alt="Top-Code Project"
+            class="w-full h-48 object-cover rounded-t-lg"
+            id="topcode"
+          />
+
+          
+          <div class="mt-4">
+            <h3 class="text-2xl font-semibold">Top-Code (Code Editor)</h3>
+            <p class="text-gray-400 mt-2">
+              Description of your first project goes here. Briefly explain the
+              features and purpose.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+      <div class="container mx-auto flex flex-col items-center justify-center">
+        <h2 class="text-3xl font-bold text-white text-center mb-8">
+          Experience
+        </h2>
+        <div id="roadmap">
+          <div id="roadmap-step">
+            <div id="step-content">
+              <h3 class="text-xl font-semibold">FreeLance UI/UX designer</h3>
+              <p class="text-gray-400">December 2023 - Present</p>
+              <p class="text-gray-300">
+                <li>
+                  Delivered seamless UI designs to micro-startups, including
+                  Freedom with AI, NotForCollege and ERIS Audio.
+                </li>
+                <li>
+                  Achieved 100% client satisfaction and high client retention.
+                </li>
+              </p>
+            </div>
+            <div id="step-marker"></div>
+          </div>
+          <div id="roadmap-step">
+            <div id="step-content">
+              <h3 class="text-xl font-semibold">
+                FullStack Developer | ErisAudio
+              </h3>
+              <p class="text-gray-400">November 2024 - Present</p>
+              <p class="text-gray-300">
+                <li>Currently Working on the Company's Webpage</li>
+                <li>
+                  Got the Priveledge to be a lead developer at a micro startup
+                </li>
+              </p>
+            </div>
+            <div id="step-marker"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6">
+      <h2 class="text-3xl font-semibold text-center mb-8">Services</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="p-4 rounded-lg shadow-md" id="service">
+          <h3 class="text-xl font-semibold">Full Stack Development</h3>
+          <img
+            src="/assets/mern.jpeg"
+            alt="MERN"
+            class="w-full h-48 object-cover rounded-t-lg mt-4"
+          />
+          <p class="text-gray-400 mt-2">
+            Delivering end-to-end web solutions, from responsive front-end
+            designs to powerful back-end infrastructure. Whether building a new
+            product or enhancing an existing platform, i craft tailored
+            solutions that drive success.
+          </p>
+        </div>
+        <div class="p-4 rounded-lg shadow-md" id="service">
+          <h3 class="text-xl font-semibold">Web Design</h3>
+          <img
+            src="/assets/webdesign.jpeg"
+            alt="webdesign"
+            class="w-full h-48 object-cover rounded-t-lg mt-4"
+          />
+          <p class="text-gray-400 mt-2">
+            User-centric and Responsive Web designs tailored to your brand.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6">
+      <h2 class="text-3xl font-semibold text-center mb-8">Get in Touch</h2>
+      <form id="contactForm" class="max-w-lg mx-auto space-y-4 p-8 bg-black">
+        <input
+          type="text"
+          placeholder="Name"
+          id="name"
+          class="w-full bg-gray-800 p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          id="email"
+          class="w-full bg-gray-800 p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
+        />
+        <textarea
+          placeholder="Message"
+          id="message"
+          class="w-full bg-gray-800 p-3 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
+        ></textarea>
+        <button
+          type="button"
+          onclick="sendEmail()"
+          class="w-full bg-blue-500 p-3 rounded-lg text-white hover:bg-blue-600"
+        >
+          Send
+        </button>
+      </form>
+    </section>
+    <script src="index.js"></script>
+  </body>
+</html>
