@@ -46,7 +46,7 @@ function sendEmail() {
   // Check if all fields are filled
   if (name && email && message) {
     Email.send({
-      SecureToken: "YOUR_SECURE_TOKEN",
+      SecureToken: "ecf6d2c5-1641-4321-b930-76a6dac02b99",
       To: "neekunjchaturvedi3@gmail.com",
       From: email,
       Subject: `New message from ${name}`,
