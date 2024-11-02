@@ -105,3 +105,13 @@ function openresume() {
 function topcode() {
   window.open("https://top-code.netlify.app/", "_blank");
 }
+function topcodegit() {
+  window.open("https://github.com/neekunjchaturvedi/Topcode", "_blank");
+}
+
+function tictac() {
+  window.open(
+    "https://github.com/neekunjchaturvedi/jsprojects/tree/main/TICTACTOE",
+    "_blank"
+  );
+}
