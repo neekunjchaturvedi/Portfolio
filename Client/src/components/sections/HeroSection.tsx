@@ -77,7 +77,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
 
       {/* Geometric Background Elements */}
       <div className="absolute top-25 left-10 w-20 h-20 bg-slate-700 rounded-full opacity-50 animate-float"></div>
-      <div className="absolute top-50 left-90 w-20 h-20 bg-slate-600 opacity-50 rounded-md animate-spin [animation-duration:5s]"></div>
+      <div className="absolute top-40 left-90 w-20 h-20 bg-slate-600 opacity-50 rounded-md animate-spin [animation-duration:5s]"></div>
       <div className="absolute top-120 left-260 w-20 h-20 bg-slate-600 opacity-50 rounded-md animate-spin [animation-duration:5s]"></div>
       <div className="absolute top-150 left-350 w-20 h-20 bg-slate-700 rounded-full opacity-50 animate-float"></div>
       {/* <div className="absolute bottom-20 right-10 w-32 h-32 bg-slate-100 rounded-lg opacity-30 animate-float-delayed"></div> */}
