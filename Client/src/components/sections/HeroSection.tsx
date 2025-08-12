@@ -1,5 +1,5 @@
 import { Button } from "../ui/button";
-import { FileText, Github } from "lucide-react";
+import { FileText, Github, ArrowDown, Sparkles, Code2 } from "lucide-react";
 
 type HeroSectionData = {
   headline: string;
@@ -19,68 +19,196 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
   };
 
   const handleGithubClick = () => {
-    // Mock action - would open GitHub profile
     window.open(data.githubUrl, "_blank");
+  };
+
+  const handleScrollDown = () => {
+    const skillsSection = document.getElementById("skills");
+    skillsSection?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center pt-16 bg-black"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
     >
-      <div className="max-w-full mx-auto px-6 gap-12 items-center">
-        {/* Text Content */}
-        <div className="space-y-6 animate-fadeInLeft flex flex-col justify-center items-center">
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-              {data.headline}
-            </h1>
-            <p className="text-xl text-slate-600 leading-relaxed text-center">
-              {data.subheadline}
-            </p>
-          </div>
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Main background decorations */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 rounded-full blur-3xl animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button
-              onClick={handleResumeClick}
-              className=" hover:bg-slate-700 text-white px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <FileText className="mr-2 h-5 w-5" />
-              View Resume
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleGithubClick}
-              className="border-slate-300 text-white hover:bg-slate-700 px-6 py-3 text-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <Github className="mr-2 h-5 w-5" />
-              GitHub Profile
-            </Button>
-          </div>
-        </div>
+        {/* Geometric shapes - Responsive positioning */}
+        <div className="absolute top-20 left-4 md:top-32 md:left-10 w-12 h-12 md:w-20 md:h-20 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full animate-float"></div>
+        <div
+          className="absolute top-40 right-4 md:top-64 md:right-20 w-8 h-8 md:w-16 md:h-16 bg-gradient-to-br from-emerald-500/30 to-cyan-500/30 rounded-lg rotate-45 animate-spin"
+          style={{ animationDuration: "8s" }}
+        ></div>
+        <div
+          className="absolute bottom-32 left-8 md:bottom-40 md:left-16 w-6 h-6 md:w-12 md:h-12 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-full animate-bounce"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute bottom-20 right-8 md:bottom-32 md:right-32 w-10 h-10 md:w-24 md:h-24 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-lg rotate-12 animate-float"
+          style={{ animationDelay: "3s" }}
+        ></div>
 
-        {/* Image */}
-        {/* <div className="relative animate-fadeInRight">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl transform rotate-6 opacity-50"></div>
-            <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-              <img
-                src={data.image}
-                alt="Developer silhouette"
-                className="w-full h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
-            </div>
-          </div>
-        </div> */}
+        {/* Floating particles */}
+        <div className="absolute top-1/3 left-1/6 w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
+        <div
+          className="absolute top-2/3 right-1/6 w-1 h-1 bg-emerald-400 rounded-full animate-pulse"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/2 left-1/3 w-1 h-1 bg-purple-400 rounded-full animate-pulse"
+          style={{ animationDelay: "2s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"
+          style={{ animationDelay: "0.5s" }}
+        ></div>
+
+        {/* Grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "50px 50px",
+          }}
+        ></div>
       </div>
 
-      {/* Geometric Background Elements */}
-      <div className="absolute top-25 left-10 w-20 h-20 bg-slate-700 rounded-full opacity-50 animate-float"></div>
-      <div className="absolute top-40 left-90 w-20 h-20 bg-slate-600 opacity-50 rounded-md animate-spin [animation-duration:5s]"></div>
-      <div className="absolute top-120 left-260 w-20 h-20 bg-slate-600 opacity-50 rounded-md animate-spin [animation-duration:5s]"></div>
-      <div className="absolute top-150 left-350 w-20 h-20 bg-slate-700 rounded-full opacity-50 animate-float"></div>
-      {/* <div className="absolute bottom-20 right-10 w-32 h-32 bg-slate-100 rounded-lg opacity-30 animate-float-delayed"></div> */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col items-center text-center space-y-8 lg:space-y-12">
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 bg-gray-800/60 backdrop-blur-sm border border-gray-700 px-4 py-2 rounded-full animate-fade-in">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <span className="text-sm text-gray-300 font-medium">
+              Available for new opportunities
+            </span>
+          </div>
+
+          {/* Main Content */}
+          <div className="space-y-6 lg:space-y-8 max-w-5xl mx-auto">
+            {/* Headline */}
+            <div className="space-y-4 lg:space-y-6">
+              <h1 className="text-5xl font-bold leading-tight animate-fade-in-up">
+                <span className="text-white">
+                  {data.headline.split(" ").map((word, index) => (
+                    <span
+                      key={index}
+                      className="inline-block animate-fade-in-up"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      {word}&nbsp;
+                    </span>
+                  ))}
+                </span>
+              </h1>
+
+              {/* Typing effect subheadline */}
+              <div className="relative">
+                <p
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-400 leading-relaxed max-w-3xl mx-auto animate-fade-in-up"
+                  style={{ animationDelay: "0.5s" }}
+                >
+                  {data.subheadline}
+                </p>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
+                  <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
+                  <div
+                    className="w-1 h-1 bg-purple-400 rounded-full animate-pulse"
+                    style={{ animationDelay: "0.2s" }}
+                  ></div>
+                  <div
+                    className="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"
+                    style={{ animationDelay: "0.4s" }}
+                  ></div>
+                </div>
+              </div>
+            </div>
+            {/* Action Buttons */}
+            <div
+              className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center items-center pt-6 lg:pt-8 animate-fade-in-up"
+              style={{ animationDelay: "1s" }}
+            >
+              <Button
+                onClick={handleResumeClick}
+                className="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 w-full sm:w-auto"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <FileText className="mr-2 h-5 w-5" />
+                Resume
+                <Sparkles className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </Button>
+
+              <Button
+                variant="outline"
+                onClick={handleGithubClick}
+                className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
+              >
+                <Github className="mr-2 h-5 w-5" />
+                GitHub Profile
+                <div className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  →
+                </div>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Custom animations */}
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(10deg);
+          }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 1s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };
