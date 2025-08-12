@@ -120,17 +120,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                 >
                   {data.subheadline}
                 </p>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1">
-                  <div className="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
-                  <div
-                    className="w-1 h-1 bg-purple-400 rounded-full animate-pulse"
-                    style={{ animationDelay: "0.2s" }}
-                  ></div>
-                  <div
-                    className="w-1 h-1 bg-emerald-400 rounded-full animate-pulse"
-                    style={{ animationDelay: "0.4s" }}
-                  ></div>
-                </div>
+                
               </div>
             </div>
             {/* Action Buttons */}
@@ -143,9 +133,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                 className="group relative bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 w-full sm:w-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                <FileText className="mr-2 h-5 w-5" />
-                Resume
-                <Sparkles className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                View Resume
+               
               </Button>
 
               <Button
@@ -154,10 +144,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                 className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold rounded-2xl transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
               >
                 <Github className="mr-2 h-5 w-5" />
-                GitHub Profile
-                <div className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  →
-                </div>
+                GitHub
               </Button>
             </div>
           </div>
