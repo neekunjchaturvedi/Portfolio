@@ -126,40 +126,34 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
               </div>
             </div>
             {/* Action Buttons */}
-            <div
-              className="flex flex-col gap-4 lg:gap-6 justify-center items-center pt-6 lg:pt-8 animate-fade-in-up"
-              style={{ animationDelay: "1s" }}
-            >
-              <div className="flex items-center gap-4">
-                <Button
-                  onClick={handleResumeClick}
-                  className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
-                >
-                  <File />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                  Resume
-                </Button>
-
-                <Button
-                  variant="outline"
-                  onClick={handleGithubClick}
-                  className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
-                >
-                  <Github className="mr-2 h-5 w-5" />
-                  GitHub
-                </Button>
-              </div>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
               <Button
-                onClick={() => {
-                  handleScrollDown2();
-                }}
+                onClick={handleResumeClick}
                 className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
               >
-                <Workflow />
+                <File />
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                Explore My Work
+                Resume
+              </Button>
+
+              <Button
+                variant="outline"
+                onClick={handleGithubClick}
+                className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
+              >
+                <Github className="mr-2 h-5 w-5" />
+                GitHub
               </Button>
             </div>
+
+            <Button
+              onClick={handleScrollDown2}
+              className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
+            >
+              <Workflow />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 blur opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              Explore My Work
+            </Button>
           </div>
         </div>
       </div>

@@ -112,17 +112,17 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             {/* Quote/Motto Section */}
             <div className="mb-12">
               <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl px-8 py-4 shadow-lg shadow-slate-200/50">
-                <Code className="w-5 h-5 text-blue-600" />
+                <Code className="w-5 h-5 text-blue-600 hidden md:block" />
                 <span className="text-slate-700 font-medium">
                   Code with Purpose
                 </span>
                 <div className="w-1 h-1 bg-slate-400 rounded-full"></div>
-                <Coffee className="w-5 h-5 text-emerald-600" />
+                <Coffee className="w-5 h-5 text-emerald-600 hidden md:block" />
                 <span className="text-slate-700 font-medium">
                   Fuel Innovation
                 </span>
                 <div className="w-1 h-1 bg-slate-400 rounded-full"></div>
-                <Heart className="w-5 h-5 text-red-500" />
+                <Heart className="w-5 h-5 text-red-500 hidden md:block" />
                 <span className="text-slate-700 font-medium">
                   Ship with Love
                 </span>
