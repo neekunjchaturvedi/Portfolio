@@ -153,7 +153,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ data }) => {
         </div>
 
         {/* Bottom stats or achievements */}
-        <div className="mt-20 text-center">
+        {/* <div className="mt-20 text-center">
           <div className="inline-flex items-center gap-4 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-2xl px-8 py-4 shadow-lg">
             <div className="text-center">
               <div className="text-2xl font-bold text-slate-800 mb-1">2022</div>
@@ -176,10 +176,10 @@ const EducationSection: React.FC<EducationSectionProps> = ({ data }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom decorative element */}
-        <div className="text-center mt-12">
+        {/* <div className="text-center mt-12">
           <div className="inline-flex items-center gap-2">
             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
             <div
@@ -191,7 +191,7 @@ const EducationSection: React.FC<EducationSectionProps> = ({ data }) => {
               style={{ animationDelay: "1s" }}
             ></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

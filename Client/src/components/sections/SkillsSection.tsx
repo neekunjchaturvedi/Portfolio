@@ -348,7 +348,7 @@ const SkillsSection = ({ data }: SkillsSectionProps) => {
         </div>
 
         {/* Experience Stats */}
-        <div className="mt-20 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-3xl p-8">
+        {/* <div className="mt-20 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-3xl p-8">
           <div className="grid grid-cols-3 md:grid-cols-3 gap-8 text-center">
             <div className="group">
               <div className="text-3xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">
@@ -368,18 +368,14 @@ const SkillsSection = ({ data }: SkillsSectionProps) => {
             </div>
             <div className="group">
               <div className="text-3xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
-                20+
+                6+
               </div>
               <div className="text-sm text-gray-400 font-medium">
                 Projects Built
               </div>
             </div>
-            
           </div>
-        </div>
-
-        
-        
+        </div> */}
       </div>
     </section>
   );

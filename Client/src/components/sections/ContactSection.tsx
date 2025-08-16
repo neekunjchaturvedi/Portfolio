@@ -292,7 +292,16 @@ const ContactSection = () => {
             </div>
 
             <CardContent className="p-6 pt-0">
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form
+                className="space-y-4"
+                action="https://api.web3forms.com/submit"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value="dff98a4f-a13c-486d-a41d-86ad999b0ba6"
+                ></input>
                 <div className="space-y-2">
                   <label
                     htmlFor="name"

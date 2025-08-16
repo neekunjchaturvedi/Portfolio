@@ -147,14 +147,14 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
             </div>
             <div className="w-0.5 h-12 bg-gray-600"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">50+</div>
+              <div className="text-2xl font-bold text-white mb-1">5+</div>
               <div className="text-xs text-gray-400">Projects Delivered</div>
             </div>
-            <div className="w-0.5 h-12 bg-gray-600"></div>
-            <div className="text-center">
+            {/* <div className="w-0.5 h-12 bg-gray-600"></div> */}
+            {/* <div className="text-center">
               <div className="text-2xl font-bold text-white mb-1">24/7</div>
               <div className="text-xs text-gray-400">Always Shipping</div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

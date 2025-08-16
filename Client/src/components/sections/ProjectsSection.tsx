@@ -91,31 +91,14 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
 
               {/* Project Image */}
               <div className="relative overflow-hidden">
-                <img
+                {/* <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+                /> */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
                 {/* Floating badges */}
-                <div className="absolute top-4 right-4 z-10">
-                  <Badge
-                    className={`${getStatusColor(
-                      project.status
-                    )} border font-medium shadow-lg backdrop-blur-sm`}
-                  >
-                    <Star className="w-3 h-3 mr-1" />
-                    {project.status}
-                  </Badge>
-                </div>
-
-                <div className="absolute top-4 left-4 z-10">
-                  <Badge className="bg-white/95 text-slate-700 border-slate-200 shadow-lg backdrop-blur-sm font-medium">
-                    <Calendar className="w-3 h-3 mr-1" />
-                    {project.timeline}
-                  </Badge>
-                </div>
 
                 {/* Overlay content that appears on hover */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
@@ -144,6 +127,17 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               <div className="relative z-10">
                 <CardHeader className="pb-3">
                   <h3 className="text-2xl font-bold text-slate-800 group-hover:text-blue-600 transition-colors duration-300 flex items-center gap-2">
+                    <div className="absolute right-4 z-10">
+                      <Badge
+                        className={`${getStatusColor(
+                          project.status
+                        )} border font-medium shadow-lg backdrop-blur-sm`}
+                      >
+                        <Star className="w-3 h-3 mr-1" />
+                        {project.status}
+                      </Badge>
+                    </div>
+
                     <Code2 className="w-5 h-5 text-slate-500 group-hover:text-blue-500 transition-colors duration-300" />
                     {project.title}
                   </h3>
@@ -184,14 +178,22 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
                       <Github className="w-4 h-4 mr-2" />
                       Source Code
                     </Button>
-                    <Button
-                      onClick={() => handleDemoClick(project.demoUrl)}
-                      size="sm"
-                      className="flex-1 bg-slate-800 hover:bg-slate-700 text-white transition-all duration-300 transform hover:scale-105 font-medium shadow-lg"
-                    >
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      Live Demo
-                    </Button>
+                    {project.demoUrl && (
+                      <Button
+                        onClick={() => handleDemoClick(project.demoUrl)}
+                        size="sm"
+                        className="flex-1 bg-slate-800 hover:bg-slate-700 text-white transition-all duration-300 transform hover:scale-105 font-medium shadow-lg"
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                  </div>
+                  <div className=" left-4 z-10">
+                    <Badge className="bg-white/95 text-slate-700 border-slate-200 shadow-lg backdrop-blur-sm font-medium">
+                      <Calendar className="w-3 h-3 mr-1" />
+                      {project.timeline}
+                    </Badge>
                   </div>
                 </CardContent>
               </div>
@@ -202,14 +204,14 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
           ))}
         </div>
         <Button
-          onClick={() => handleGithubClick("https://github.com/neekunjchaturvedi")}
+          onClick={() =>
+            handleGithubClick("https://github.com/neekunjchaturvedi")
+          }
           className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center mx-auto"
         >
           <Github className="w-5 h-5 mr-3" />
           View All Projects on GitHub
         </Button>
-
-       
       </div>
     </section>
   );

@@ -15,15 +15,18 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
   const handleResumeClick = () => {
     // Mock action - would open/download resume
-    alert("Resume would be opened/downloaded here");
+    window.open(
+      "https://drive.google.com/file/d/1DUGy-qBlR1FAp1XSKhpPL2JiEnb9Daih/view?usp=sharing",
+      "_blank"
+    );
   };
 
   const handleGithubClick = () => {
     window.open(data.githubUrl, "_blank");
   };
 
-  const handleScrollDown = () => {
-    const skillsSection = document.getElementById("skills");
+  const handleScrollDown2 = () => {
+    const skillsSection = document.getElementById("experience");
     skillsSection?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -147,7 +150,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                 </Button>
               </div>
               <Button
-                onClick={handleResumeClick}
+                onClick={() => {
+                  handleScrollDown2();
+                }}
                 className="group border-2 border-gray-600 text-gray-300 hover:text-white hover:bg-gray-800 hover:border-gray-500 px-6 lg:px-8 py-3 lg:py-4 text-base lg:text-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-gray-900/50 backdrop-blur-sm w-full sm:w-auto"
               >
                 <Workflow />
