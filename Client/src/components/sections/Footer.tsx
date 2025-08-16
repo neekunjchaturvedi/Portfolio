@@ -1,4 +1,12 @@
-import { Github, Linkedin, Mail, Heart, Code, Coffee, ArrowBigUp } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Heart,
+  Code,
+  Coffee,
+  ArrowBigUp,
+} from "lucide-react";
 
 type FooterData = {
   githubUrl: string;
@@ -129,9 +137,8 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-slate-600 text-sm">
-                © {currentYear} {data.name}. All rights reserved.
+                © {currentYear} {data.name}.
               </p>
-              
             </div>
 
             {/* Fun Stats */}
@@ -172,7 +179,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
               <span>Back to Top</span>
               <div className="w-6 h-6 flex items-center justify-center group-hover:border-slate-500 transition-colors duration-300">
                 <span className="text-xs group-hover:-translate-y-0.5 transition-transform duration-300">
-                  <ArrowBigUp/>
+                  <ArrowBigUp />
                 </span>
               </div>
             </button>

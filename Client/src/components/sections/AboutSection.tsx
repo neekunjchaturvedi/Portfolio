@@ -27,6 +27,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
       description: "Turning ideas into scalable, production-ready code",
       gradient: "from-green-400 to-teal-500",
     },
+    {
+      icon: "🛠️",
+      title: "Scalable Systems",
+      description: "Building robust, scalable architectures",
+      gradient: "from-white-400 to-black-500",
+    },
   ];
 
   return (
@@ -61,7 +67,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
 
         {/* Main content card */}
         <Card className="border-0 shadow-xl shadow-slate-200/50 bg-white/80 backdrop-blur-sm mb-16">
-          <CardContent className="p-8 md:p-12">
+          <CardContent className="px-8 md:p-12">
             {/* Status badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-8">
               <div className="inline-flex items-center px-4 py-2 rounded-full bg-green-50 border border-green-200">
@@ -87,17 +93,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
               <p className="text-lg md:text-xl text-slate-700 leading-relaxed max-w-4xl mx-auto mb-6">
                 {data.about}
               </p>
-              <p className="text-slate-600 italic">
+              <p className="text-slate-600">
                 Turning ideas into clean, scalable, and top-end software.
                 <br />
-                <span className="font-semibold text-slate-700">
+                <span className="font-semibold text-slate-700 text">
                   🚀 Coding since 2022 💪
                 </span>
               </p>
             </div>
 
             {/* Key points with modern cards */}
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {highlights.map((item, index) => (
                 <div
                   key={index}
@@ -116,10 +122,10 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
                         {item.icon}
                       </span>
                     </div>
-                    <h3 className="font-bold text-slate-800 mb-3 text-lg text-center">
+                    <h3 className="font-bold text-slate-800 mb-3 text-xs md:text-lg text-center">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed text-center">
+                    <p className="text-slate-600 text-sm leading-relaxed text-center hidden md:block">
                       {item.description}
                     </p>
                   </div>
