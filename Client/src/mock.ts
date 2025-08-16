@@ -1,4 +1,7 @@
 // Updated mock data for Neekunj's Portfolio
+import moovicart from "./assets/work/moovicart_logo.jpeg";
+import wallstorie from "./assets/work/wallstorie.png";
+import outceedo from "./assets/work/outceedo.png";
 export const mockData = {
   personal: {
     name: "Neekunj Chaturvedi",
@@ -62,6 +65,7 @@ export const mockData = {
       role: "Full-Stack Developer - Intern",
       company: "Outceedo (Remote)",
       duration: "July 2025 - Present",
+      img: outceedo,
       description:
         "Worked with microservices architecture, developed APIs, integrated RESTful APIs across systems, and managed the frontend repository as the top contributor. Implemented Redux, used ShadCN for UI, and set up Slack notifications in CI/CD pipelines.",
     },
@@ -70,6 +74,7 @@ export const mockData = {
       role: "Frontend and Integration Engineer - Intern",
       company: "Moovicart (Remote)",
       duration: "April 2025 - June 2025",
+      img: moovicart,
       description:
         "Built a scalable frontend architecture using React.js, integrated RESTful APIs with robust error handling, implemented WebRTC for video calls, and improved API efficiency by 35% using Redux for state management.",
     },
@@ -78,6 +83,7 @@ export const mockData = {
       role: "Full-Stack Developer - Intern",
       company: "WallStorie",
       duration: "Dec 2024 - March 2025",
+      img: wallstorie,
       description:
         "Part of the core development team. Developed real-time order management, admin panel, and scalable frontend using React with Redux. Redesigned backend with Node.js and Express, reducing API response time by 35%.",
     },

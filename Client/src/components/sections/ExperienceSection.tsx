@@ -7,6 +7,7 @@ interface ExperienceItem {
   duration: string;
   company: string;
   description: string;
+  img: string;
 }
 
 interface ExperienceSectionProps {
@@ -75,8 +76,11 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
                       {/* Icon Section */}
                       <div className="flex-shrink-0">
                         <div className="relative">
-                          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
-                            <Briefcase className="h-8 w-8 text-white" />
+                          <div className="w-16 h-16  rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
+                            <img
+                              className="h-16 w-16 text-blue-400"
+                              src={item.img}
+                            />
                           </div>
                           {/* Glow effect */}
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
@@ -92,7 +96,6 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
                               {item.role}
                             </h3>
                             <div className="flex items-center gap-2 text-gray-300 mb-3">
-                              <Building2 className="h-4 w-4 text-blue-400" />
                               <span className="font-semibold text-blue-400">
                                 {item.company}
                               </span>
