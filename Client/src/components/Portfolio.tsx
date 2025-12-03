@@ -1,30 +1,43 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import {
+  Home,
+  User,
+  Wrench,
+  FolderKanban,
+  BriefcaseBusiness,
+  GraduationCap,
+  Mail,
+  Moon,
+  Sun,
+} from "lucide-react";
 import { mockData } from "../mock";
 
 import HeroSection from "./sections/HeroSection";
 import AboutSection from "./sections/AboutSection";
-import SkillsSection from "./sections/SkillsSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import EducationSection from "./sections/EducationSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
 import { Toaster } from "./ui/toaster";
+import { Separator } from "./ui/separator";
+import { SkillsSection } from "./sections/SkillsSection";
 
 const Portfolio = () => {
   const [data] = useState(mockData);
   const [activeSection, setActiveSection] = useState("hero");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [showThemeMessage, setShowThemeMessage] = useState(false);
 
   const navigationItems = [
-    { id: "hero", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "experience", label: "Experience" },
-    { id: "education", label: "Education" },
-    { id: "contact", label: "Contact" },
+    { id: "hero", label: "Home", icon: Home },
+    { id: "about", label: "About", icon: User },
+    { id: "skills", label: "Skills", icon: Wrench },
+    { id: "projects", label: "Projects", icon: FolderKanban },
+    { id: "experience", label: "Work", icon: BriefcaseBusiness },
+    { id: "education", label: "Education", icon: GraduationCap },
+    { id: "contact", label: "Contact", icon: Mail },
   ];
 
   useEffect(() => {
@@ -58,171 +71,109 @@ const Portfolio = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking outside
+  // Theme handling – default to dark
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      if (
-        !target.closest(".mobile-menu") &&
-        !target.closest(".hamburger-button")
-      ) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener("click", handleClickOutside);
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = "hidden";
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.body.classList.add("bg-slate-950");
+      document.body.classList.remove("bg-slate-50");
     } else {
-      document.body.style.overflow = "unset";
+      document.documentElement.classList.remove("dark");
+      document.body.classList.remove("bg-slate-950");
+      document.body.classList.add("bg-slate-50");
     }
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
+  }, [theme]);
 
   const handleNavClick = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMobileMenuOpen(false);
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+  const handleThemeToggle = () => {
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      if (next === "light") {
+        setShowThemeMessage(true);
+        setTimeout(() => {
+          setShowThemeMessage(false);
+        }, 2000);
+      }
+      return next;
+    });
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex justify-between items-center">
-            {/* Logo */}
-            <div
-              className="text-xl font-bold text-white cursor-pointer hover:text-blue-400 transition-colors duration-300"
-              onClick={() => handleNavClick("hero")}
-            >
-              Neekunj Chaturvedi
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex space-x-8">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`relative transition-all duration-300 hover:scale-105 ${
-                    activeSection === item.id
-                      ? "text-blue-400 font-medium"
-                      : "text-gray-300 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400 rounded-full"></div>
-                  )}
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Hamburger Button */}
-            <button
-              className="hamburger-button lg:hidden p-2 text-gray-300 hover:text-white transition-colors duration-300 focus:outline-none"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              <div className="relative w-6 h-6">
-                <Menu
-                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                    isMobileMenuOpen
-                      ? "opacity-0 rotate-90"
-                      : "opacity-100 rotate-0"
-                  }`}
-                />
-                <X
-                  className={`absolute inset-0 w-6 h-6 transition-all duration-300 ${
-                    isMobileMenuOpen
-                      ? "opacity-100 rotate-0"
-                      : "opacity-0 -rotate-90"
-                  }`}
-                />
-              </div>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        <div
-          className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
-            isMobileMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
-          style={{ top: "72px" }}
-        >
-          {/* Mobile Menu */}
-          <div
-            className={`mobile-menu h-screen bg-gray-900/98 backdrop-blur-md border-t border-gray-800 transform transition-transform duration-300 ease-out ${
-              isMobileMenuOpen ? "translate-y-0" : "-translate-y-full"
-            }`}
-          >
-            <div className="px-4 py-6 space-y-1">
-              {navigationItems.map((item, index) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`group w-full text-left px-4 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-between ${
-                    activeSection === item.id
-                      ? "bg-blue-600/20 text-blue-400 font-medium shadow-lg shadow-blue-600/20"
-                      : "text-gray-300 hover:bg-gray-800/50 hover:text-white"
-                  }`}
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <span className="text-lg">{item.label}</span>
-                  {activeSection === item.id && (
-                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  )}
-                  
-                </button>
-              ))}
-            </div>
-
-            {/* Mobile Menu Footer */}
-            <div className="border-t border-gray-800 px-4 py-6">
-              <div className="text-center">
-                <p className="text-gray-400 text-sm mb-2">Always Shipping 🚀</p>
-                <div className="flex justify-center gap-2">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  <div
-                    className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"
-                    style={{ animationDelay: "0.5s" }}
-                  ></div>
-                  <div
-                    className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"
-                    style={{ animationDelay: "1s" }}
-                  ></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-slate-950 text-slate-50 pb-24">
       {/* Sections */}
       <HeroSection data={data.personal} />
       <AboutSection data={data.personal} />
-      <SkillsSection data={data.skills} />
+      <SkillsSection />
       <ProjectsSection data={data.projects} />
       <ExperienceSection data={data.experience} />
+      <Separator className="bg-gray-800 w-full h-0.5" />
       <EducationSection data={data.education} />
       <ContactSection />
       <Footer data={data.personal} />
       <Toaster />
+
+      {/* Bottom Navigation */}
+      <nav className="fixed bottom-10 left-0 right-0 z-50 backdrop-blur-md">
+        <div className="max-w-3xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+          {navigationItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.id;
+
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className="flex-1 flex justify-center"
+              >
+                <div
+                  className={`flex items-center justify-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "bg-gray-900 text-white-400 max-w-[160px]"
+                      : "text-gray-400 hover:text-gray-100 hover:bg-gray-800/60 max-w-[60px]"
+                  }`}
+                >
+                  <Icon
+                    className={`w-5 h-5 transition-transform ${
+                      isActive ? "scale-110" : "scale-100"
+                    }`}
+                  />
+                  {isActive && (
+                    <span className="text-xs font-medium truncate">
+                      {item.label}
+                    </span>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+
+          {/* Theme Toggle */}
+          <div className="relative flex items-center justify-center ml-1">
+            {showThemeMessage && (
+              <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+                Sorry i hate light mode :)
+              </div>
+            )}
+            <button
+              onClick={handleThemeToggle}
+              className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900/80 hover:bg-gray-800 transition-all"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Moon className="w-5 h-5 text-gray-300" />
+              ) : (
+                <Sun className="w-5 h-5 text-yellow-400" />
+              )}
+            </button>
+          </div>
+        </div>
+      </nav>
     </div>
   );
 };

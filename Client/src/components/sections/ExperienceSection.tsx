@@ -18,147 +18,35 @@ const ExperienceSection = ({ data }: ExperienceSectionProps) => {
   return (
     <section
       id="experience"
-      className="py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+      className="py-16 px-4 md:px-0 bg-black text-white border-t border-gray-900"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-gradient-to-br from-emerald-500/8 to-cyan-500/8 rounded-full blur-3xl"></div>
-      </div>
+      <div className="container mx-auto px-4 max-w-4xl">
+        <h2 className="text-lg font-mono text-gray-500 mb-12 tracking-wider uppercase opacity-80">
+          // Professional History
+        </h2>
 
-      <div className="max-w-6xl mx-auto px-6 relative">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="w-12 h-0.5 bg-gradient-to-r from-transparent to-gray-600"></span>
-            <span className="text-sm font-medium text-gray-400 tracking-widest uppercase">
-              Professional Journey
-            </span>
-            <span className="w-12 h-0.5 bg-gradient-to-l from-transparent to-gray-600"></span>
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-              Experience
-            </span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Building innovative solutions and growing through challenging
-            projects
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Animated Timeline Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-700 via-gray-600 to-gray-700 hidden md:block">
-            <div className="absolute inset-0 opacity-30 animate-pulse"></div>
-          </div>
-
-          <div className="space-y-12">
-            {data.map((item, index) => (
-              <div
-                key={item.id}
-                className="relative group"
-                style={{
-                  animationDelay: `${index * 0.2}s`,
-                }}
-              >
-                {/* Animated Timeline Dot */}
-                <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-gray-900 shadow-xl hidden md:block group-hover:scale-125 transition-all duration-300 z-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full animate-ping opacity-20"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full"></div>
-                </div>
-
-                {/* Experience Card */}
-                <Card className="md:ml-16 border border-gray-700 bg-gray-800/60 backdrop-blur-sm hover:bg-gray-700/60 hover:border-gray-600 shadow-xl hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 transform hover:-translate-y-2 group overflow-hidden">
-                  <CardContent className="p-8 relative z-10">
-                    <div className="flex flex-col lg:flex-row lg:items-start gap-6">
-                      {/* Icon Section */}
-                      <div className="flex-shrink-0">
-                        <div className="relative">
-                          <div className="w-16 h-16  rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/25 transition-all duration-300">
-                            <img
-                              className="h-16 w-16 text-blue-400"
-                              src={item.img}
-                            />
-                          </div>
-                          {/* Glow effect */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300 -z-10"></div>
-                        </div>
-                      </div>
-
-                      {/* Content Section */}
-                      <div className="flex-1 min-w-0">
-                        {/* Header */}
-                        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                          <div className="flex-1">
-                            <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                              {item.role}
-                            </h3>
-                            <div className="flex items-center gap-2 text-gray-300 mb-3">
-                              <span className="font-semibold text-blue-400">
-                                {item.company}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Duration Badge */}
-                          <div className="flex items-center gap-2 bg-gray-700/80 backdrop-blur-sm border border-gray-600 px-4 py-2 rounded-full">
-                            <Calendar className="h-4 w-4 text-emerald-400" />
-                            <span className="text-sm font-medium text-gray-200 whitespace-nowrap">
-                              {item.duration}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Description */}
-                        <div className="relative">
-                          <p className="text-gray-300 leading-relaxed text-base">
-                            {item.description}
-                          </p>
-
-                          {/* Decorative arrow */}
-                          <div className="absolute -left-4 top-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300">
-                            <ChevronRight className="h-5 w-5 text-blue-400" />
-                          </div>
-                        </div>
-
-                        {/* Skills/Tech tags (if you want to add them later) */}
-                        <div className="mt-6 flex flex-wrap gap-2">
-                          {/* You can add skill tags here later */}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Connection line to next item */}
-                {index < data.length - 1 && (
-                  <div className="absolute left-8 -bottom-6 w-0.5 h-6 bg-gradient-to-b from-gray-600 to-transparent hidden md:block"></div>
-                )}
+        <div className="space-y-16 ">
+          {data.map((job) => (
+            <div
+              key={job.id}
+              className="group grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-8 items-start "
+            >
+              <div className="text-sm font-mono text-gray-500 pt-1 group-hover:text-gray-300 transition-colors">
+                {job.duration}
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom stats or call-to-action */}
-        <div className="mt-20 text-center">
-          <div className="inline-flex items-center gap-4 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl px-8 py-4">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">3+</div>
-              <div className="text-xs text-gray-400">Years Experience</div>
+              <div>
+                <h3 className="text-2xl font-bold text-gray-100 group-hover:text-emerald-400 transition-colors duration-300">
+                  {job.role}
+                </h3>
+                <div className="text-gray-400 mb-4 font-medium">
+                  {job.company}
+                </div>
+                <p className="text-gray-500 leading-relaxed text-base group-hover:text-gray-400 transition-colors duration-300">
+                  {job.description}
+                </p>
+              </div>
             </div>
-            <div className="w-0.5 h-12 bg-gray-600"></div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">5+</div>
-              <div className="text-xs text-gray-400">Projects Delivered</div>
-            </div>
-            {/* <div className="w-0.5 h-12 bg-gray-600"></div> */}
-            {/* <div className="text-center">
-              <div className="text-2xl font-bold text-white mb-1">24/7</div>
-              <div className="text-xs text-gray-400">Always Shipping</div>
-            </div> */}
-          </div>
+          ))}
         </div>
       </div>
     </section>
