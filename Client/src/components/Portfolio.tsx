@@ -105,7 +105,7 @@ const Portfolio = () => {
     <div className="min-h-screen bg-slate-950 text-slate-50 pb-24">
       <div className="absolute fixed z-100 flex items-center justify-center ml-1 top-2 right-2 block md:hidden ">
         {showThemeMessage && (
-          <div className="absolute top-12 right-18 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+          <div className="absolute top-12 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
             Sorry i hate light mode :)
           </div>
         )}
