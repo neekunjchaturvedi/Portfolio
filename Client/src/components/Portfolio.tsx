@@ -5,7 +5,6 @@ import {
   Wrench,
   FolderKanban,
   BriefcaseBusiness,
-  GraduationCap,
   Mail,
   Moon,
   Sun,
@@ -36,7 +35,6 @@ const Portfolio = () => {
     { id: "skills", label: "Skills", icon: Wrench },
     { id: "projects", label: "Projects", icon: FolderKanban },
     { id: "experience", label: "Work", icon: BriefcaseBusiness },
-    { id: "education", label: "Education", icon: GraduationCap },
     { id: "contact", label: "Contact", icon: Mail },
   ];
 
@@ -48,7 +46,6 @@ const Portfolio = () => {
         "skills",
         "projects",
         "experience",
-        "education",
         "contact",
       ];
       const scrollPosition = window.scrollY + 100;
@@ -106,6 +103,24 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 pb-24">
+      <div className="absolute fixed z-100 flex items-center justify-center ml-1 top-2 right-2 block md:hidden ">
+        {showThemeMessage && (
+          <div className="absolute top-12 right-18 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+            Sorry i hate light mode :)
+          </div>
+        )}
+        <button
+          onClick={handleThemeToggle}
+          className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900/80 hover:bg-gray-800 transition-all"
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <Moon className="w-5 h-5 text-gray-300" />
+          ) : (
+            <Sun className="w-5 h-5 text-yellow-400" />
+          )}
+        </button>
+      </div>
       {/* Sections */}
       <HeroSection data={data.personal} />
       <AboutSection data={data.personal} />
@@ -120,7 +135,7 @@ const Portfolio = () => {
 
       {/* Bottom Navigation */}
       <nav className="fixed bottom-10 left-0 right-0 z-50 backdrop-blur-md">
-        <div className="max-w-3xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+        <div className="max-w-3xl mx-auto px-4 py-2 flex items-center justify-between gap-0.5">
           {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
@@ -152,12 +167,10 @@ const Portfolio = () => {
               </button>
             );
           })}
-
-          {/* Theme Toggle */}
-          <div className="relative flex items-center justify-center ml-1">
+          <div className="flex items-center justify-center ml-1 hidden md:block">
             {showThemeMessage && (
-              <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
-                Sorry i hate light mode :)
+              <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-gray-900 text-[15px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+                Sorry I hate light mode :)
               </div>
             )}
             <button

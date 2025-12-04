@@ -2,33 +2,34 @@ import { useState } from "react";
 import { Send, Mail, Github, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const formData = new FormData(e.currentTarget);
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+
+    setIsSubmitting(false);
+
+    if (result.success) {
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      e.currentTarget.reset();
 
       setTimeout(() => setSubmitStatus("idle"), 3000);
-    }, 1500);
+    } else {
+      setSubmitStatus("error");
+    }
   };
 
   const socialLinks = [
@@ -41,13 +42,13 @@ const ContactSection = () => {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/neekunj-chaturvedi/",
       label: "Connect",
     },
     {
       name: "Email",
       icon: Mail,
-      href: "mailto:hello@example.com",
+      href: "mailto:neekunjchaturvedi3@gmail.com",
       label: "Message",
     },
   ];
@@ -60,14 +61,14 @@ const ContactSection = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
-          {/* Left Column: Contact Info */}
+          {/* Left Column */}
           <div>
             <h3 className="text-3xl font-bold mb-6 text-gray-100">
               Let's build something.
             </h3>
-            <p className="text-gray-400 leading-relaxed mb-10">
-              I'm always open to discussing new projects, creative ideas, or
-              opportunities to be part of your visions.
+            <p className="text-gray-400 font-mono leading-relaxed mb-10">
+              // Open to Code, Collaborate, discussing new projects, creative
+              ideas, or opportunities...
             </p>
 
             <div className="space-y-4">
@@ -88,9 +89,23 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Right Column: Minimal Form */}
+          {/* Right Column */}
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Web3Forms required fields */}
+              <input
+                type="hidden"
+                name="access_key"
+                value={import.meta.env.VITE_FORM}
+              />
+              <input
+                type="hidden"
+                name="subject"
+                value="New Contact Message from Portfolio"
+              />
+              <input type="hidden" name="from_name" value="Portfolio Website" />
+
+              {/* Name */}
               <div>
                 <label
                   htmlFor="name"
@@ -100,16 +115,14 @@ const ContactSection = () => {
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
                   required
-                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600 transition-colors"
+                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600"
                   placeholder="John Doe"
                 />
               </div>
 
+              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -119,16 +132,14 @@ const ContactSection = () => {
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
                   required
-                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600 transition-colors"
+                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600"
                   placeholder="john@example.com"
                 />
               </div>
 
+              {/* Message */}
               <div>
                 <label
                   htmlFor="message"
@@ -137,17 +148,15 @@ const ContactSection = () => {
                   Message
                 </label>
                 <textarea
-                  id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600 transition-colors resize-none"
+                  className="w-full bg-gray-900 border border-gray-800 text-white px-4 py-3 rounded focus:outline-none focus:border-gray-600 resize-none"
                   placeholder="Project details..."
                 />
               </div>
 
+              {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -157,6 +166,8 @@ const ContactSection = () => {
                   "Sending..."
                 ) : submitStatus === "success" ? (
                   "Message Sent!"
+                ) : submitStatus === "error" ? (
+                  "Something went wrong!"
                 ) : (
                   <>
                     <span>Send Message</span>

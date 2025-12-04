@@ -2,7 +2,6 @@ import { Github, ExternalLink } from "lucide-react";
 
 interface Project {
   id: string | number;
-  image: string;
   title: string;
   description: string;
   status: string;

@@ -44,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
               Neekunj Chaturvedi
             </h3>
             <p className="text-gray-500 text-sm">
-              Full Stack Developer • Always Shipping • Building the Future
+             // I actually build softwares that scales
             </p>
           </div>
 

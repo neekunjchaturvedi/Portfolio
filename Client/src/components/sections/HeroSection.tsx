@@ -43,7 +43,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         {/* Minimal Status Indicator */}
         <div className="flex items-center gap-3 mb-8 opacity-80">
           <span className="font-mono text-sm text-gray-400 tracking-widest uppercase">
-            //Available for new opportunities
+            //I build Softwares that scale
           </span>
         </div>
 

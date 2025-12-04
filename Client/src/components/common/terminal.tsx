@@ -1,6 +1,5 @@
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Code2, Sparkles, Zap, Rocket, Terminal, Coffee } from "lucide-react";
 
 export function CinematicSection() {
   const ref = useRef<HTMLElement>(null);
@@ -31,11 +30,11 @@ export function CinematicSection() {
   }, [mouseX, mouseY]);
 
   const codeLines = [
-    "const passion = '∞';",
+    "const passion = 'Number.MAX_VALUE';",
     "function build() {",
-    "  return awesome;",
+    "  return tech;",
     "}",
-    "while(alive) { code(); }",
+    "while(awake) { code(); }",
   ];
 
   return (

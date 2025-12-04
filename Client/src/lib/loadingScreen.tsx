@@ -79,30 +79,6 @@ export const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         </div>
 
         {/* Orbiting Tools Ring */}
-        <div className="absolute inset-0 orbit-container pointer-events-none">
-          {EMOJIS.map((emoji, i) => {
-            const angle = (i / EMOJIS.length) * 360;
-            const radius = 80; // Distance from center
-            // Calculate absolute position on the circle (simple CSS trig approximation via rotation wrapper could work, but absolute positioning is cleaner here)
-            // We use transform in the style to place them, then the parent rotates
-
-            return (
-              <div
-                key={i}
-                className={`absolute top-1/2 left-1/2 w-10 h-10 -ml-5 -mt-5 flex items-center justify-center text-3xl transition-all duration-500`}
-                style={{
-                  transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
-                  transitionDelay: `${i * 100}ms`,
-                  opacity: showEmojis ? 1 : 0,
-                  scale: showEmojis ? 1 : 0,
-                }}
-              >
-                {/* The inner item counter-rotates via CSS class to stay upright */}
-                <div className="orbit-item">{emoji}</div>
-              </div>
-            );
-          })}
-        </div>
 
         {/* The Rocket on a wider, faster orbit */}
         <div className="absolute inset-[-40px] rocket-orbit pointer-events-none">

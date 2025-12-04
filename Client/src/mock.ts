@@ -107,22 +107,31 @@ export const mockData = {
   projects: [
     {
       id: 1,
-      title: "TopCode",
+      title: "Abuse",
       description:
-        "Code editor with multi-language support for compiling and running code.",
-      image: "https://images.unsplash.com/photo-106344.jpeg",
-      technologies: ["React.js", "API Integration"],
-      githubUrl: "https://github.com/neekunjchaturvedi/Topcode",
-      demoUrl: "https://top-code.netlify.app/",
-      timeline: "Oct 2024",
+        "A terminal integrated tool that roasts you when you mess up on the terminal",
+      technologies: ["NodeJs", "Npm", "CommanderJS", "ChalkJS"],
+      githubUrl: "https://github.com/neekunjchaturvedi/Abuse",
+      demoUrl: "https://www.npmjs.com/package/abuse-plus",
+      timeline: "November 2025",
       status: "Completed",
     },
     {
       id: 2,
+      title: "ChatVerse",
+      description:
+        "Real Time Chat Application with Socket.IO for real-time communication.",
+      technologies: ["React.js", "Socket.IO", "Node.js", "Express"],
+      githubUrl: "https://github.com/neekunjchaturvedi/ChatVerse",
+      demoUrl: "",
+      timeline: "June 2025",
+      status: "Completed",
+    },
+    {
+      id: 3,
       title: "D-Hosting",
       description:
         "Decentralized Web Hosting Platform with an inbuilt Search Engine using IPFS and Solidity smart contracts.",
-      image: "https://images.unsplash.com/photo-106344.jpeg",
       technologies: [
         "IPFS",
         "TypeScript",
@@ -136,29 +145,15 @@ export const mockData = {
       timeline: "Jan 2025",
       status: "Completed",
     },
-
-    {
-      id: 3,
-      title: "TourneyVerse",
-      description:
-        "Tournament Management System for organizing and managing esports tournaments.",
-      image: "https://images.unsplash.com/photo-106344.jpeg",
-      technologies: ["Next.js", "MongoDB", "ShadCN", "Tailwind CSS"],
-      githubUrl: "https://github.com/neekunjchaturvedi/TourneyVerse",
-      demoUrl: "",
-      timeline: "March 2025",
-      status: "Completed",
-    },
     {
       id: 4,
-      title: "ChatVerse",
+      title: "TopCode",
       description:
-        "Real Time Chat Application with Socket.IO for real-time communication.",
-      image: "https://images.unsplash.com/photo-106344.jpeg",
-      technologies: ["React.js", "Socket.IO", "Node.js", "Express"],
-      githubUrl: "https://github.com/neekunjchaturvedi/ChatVerse",
-      demoUrl: "",
-      timeline: "June 2025",
+        "Code editor with multi-language support for compiling and running code.",
+      technologies: ["React.js", "API Integration"],
+      githubUrl: "https://github.com/neekunjchaturvedi/Topcode",
+      demoUrl: "https://top-code.netlify.app/",
+      timeline: "Oct 2024",
       status: "Completed",
     },
   ],
