@@ -9,7 +9,12 @@ import {
   Sun,
 } from "lucide-react";
 
-import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Separator } from "@/components/ui/separator";
 
@@ -24,7 +29,6 @@ import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
-
 
 const Portfolio = () => {
   const [data] = useState(mockData);
@@ -43,13 +47,7 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "hero",
-        "about",
-        "projects",
-        "experience",
-        "contact",
-      ];
+      const sections = ["hero", "about", "projects", "experience", "contact"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -101,20 +99,18 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 relative">
-      
       {/* Sections */}
       <HeroSection data={data.personal} />
       <AboutSection data={data.personal} />
       <ProjectsSection data={data.projects} />
       <ExperienceSection data={data.experience} />
-      
+
       <Separator className="bg-gray-800 w-full h-0.5" />
-      
+
       <ContactSection />
       <Footer data={data.personal} />
-      
-      <Toaster />
 
+      <Toaster />
 
       {/* ===== BOTTOM DOCK NAVIGATION ===== */}
       <TooltipProvider delayDuration={20}>
@@ -152,22 +148,22 @@ const Portfolio = () => {
           {/* Theme Toggle */}
           <DockIcon>
             {showThemeMessage && (
-    <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
-      Sorry I hate light mode :)
-    </div>
-  )}
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+                Sorry I hate light mode :)
+              </div>
+            )}
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
-        onClick={handleThemeToggle}
-        className="size-12 rounded-full flex items-center justify-center border border-gray-800 bg-gray-900/80 hover:bg-gray-800"
-      >
-        {theme === "dark" ? (
-          <Moon className="w-5 h-5 text-gray-300" />
-        ) : (
-          <Sun className="w-5 h-5 text-yellow-400" />
-        )}
-      </button>
+                  onClick={handleThemeToggle}
+                  className="size-12 rounded-full flex items-center justify-center border border-gray-800 bg-gray-900/80 hover:bg-gray-800"
+                >
+                  {theme === "dark" ? (
+                    <Moon className="w-5 h-5 text-gray-300" />
+                  ) : (
+                    <Sun className="w-5 h-5 text-yellow-400" />
+                  )}
+                </button>
               </TooltipTrigger>
               <TooltipContent>
                 <p>Theme</p>
