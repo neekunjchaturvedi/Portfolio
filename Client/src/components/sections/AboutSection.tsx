@@ -56,7 +56,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
           </p>
 
           {/* Tech Pills */}
-          <div className="flex flex-wrap gap-2 md:gap-3">
+          {/* <div className="flex flex-wrap gap-2 md:gap-3">
             <span className="px-3 py-1 bg-green-900/20 border border-green-900/30 rounded-full text-sm text-green-400 font-medium">
               Always Shipping
             </span>
@@ -70,7 +70,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ data }) => {
                 </span>
               )
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Highlights Grid */}

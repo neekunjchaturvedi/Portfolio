@@ -87,6 +87,15 @@ export const mockData = {
       description:
         "Part of the core development team. Developed real-time order management, admin panel, and scalable frontend using React with Redux. Redesigned backend with Node.js and Express, reducing API response time by 35%.",
     },
+    {
+      id: 3,
+      role: "Freelance",
+      company: "",
+      duration: "Dec 2024 - Present",
+      img: wallstorie,
+      description:
+        "Delivered Web designs for Freedom with AI, NotForCollege and delivered full-stack Website for ABMK Car Rentals (Dubai) with complete frontend and backend ",
+    },
   ],
   education: [
     {

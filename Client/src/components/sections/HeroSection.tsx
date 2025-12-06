@@ -1,5 +1,6 @@
 import { Button } from "../ui/button";
 import { Github, File, Workflow, FileText, ArrowDown } from "lucide-react";
+import { FlickeringGrid } from "@/components/ui/flickering-grid"
 
 type HeroSectionData = {
   headline: string;
@@ -39,7 +40,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
       id="hero"
       className="min-h-screen bg-black text-white flex flex-col justify-center relative border-b border-gray-900"
     >
-      <div className="container mx-auto px-6 md:px-4 max-w-4xl">
+      
+      <div className="container mx-auto px-6 md:px-4 max-w-4xl z-20">
+        
         {/* Minimal Status Indicator */}
         <div className="flex items-center gap-3 mb-8 opacity-80">
           <span className="font-mono text-sm text-gray-400 tracking-widest uppercase">

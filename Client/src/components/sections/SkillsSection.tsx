@@ -1,22 +1,24 @@
-import { Code, Cpu, Database, Terminal } from "lucide-react";
-import antd from "@/assets/antd.svg";
-import shadcn from "@/assets/shadcn.png";
+import { useState } from "react"
+import { Code, Cpu, Database, Terminal, ChevronDown } from "lucide-react"
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible"
+import { IconCloud } from "@/components/ui/icon-cloud"
+import antd from "@/assets/antd.svg"
+import shadcn from "@/assets/shadcn.png"
 
 type Skill = {
-  name: string;
-  level: number;
-};
+  name: string
+  level: number
+}
 
 export const SkillsSection = () => {
-  // Hardcoded data to keep the file self-contained
-
   const Programming: Skill[] = [
     { name: "Javascript", level: 5 },
     { name: "Typescript", level: 5 },
     { name: "Java", level: 4 },
     { name: "Python", level: 3 },
     { name: "C", level: 3 },
-  ];
+  ]
+
   const frontendSkills: Skill[] = [
     { name: "React", level: 5 },
     { name: "TypeScript", level: 4 },
@@ -30,7 +32,7 @@ export const SkillsSection = () => {
     { name: "Redux", level: 3 },
     { name: "Markdown", level: 3 },
     { name: "Figma", level: 3 },
-  ];
+  ]
 
   const backendSkills: Skill[] = [
     { name: "Nodejs", level: 4 },
@@ -42,7 +44,7 @@ export const SkillsSection = () => {
     { name: "Redis", level: 3 },
     { name: "RabbitMQ", level: 3 },
     { name: "Firebase", level: 3 },
-  ];
+  ]
 
   const toolSkills: Skill[] = [
     { name: "VSCode", level: 5 },
@@ -57,112 +59,111 @@ export const SkillsSection = () => {
     { name: "Vercel", level: 5 },
     { name: "Netlify", level: 5 },
     { name: "Bash", level: 3 },
-  ];
+  ]
 
-  const getSkillIconName = (name: string) => {
-    const map: Record<string, string> = {
-      Nodejs: "nodejs",
-      NextJS: "nextjs",
-    };
-    return map[name] || name.toLowerCase();
-  };
+  const getSkillIconName = (name: string) =>
+    ({
+      Nodejs: "nodedotjs",
+      NextJS: "nextdotjs",
+      Typescript: "typescript",
+    }[name] || name.toLowerCase())
+
+  const SkillBlock = ({ skills }: { skills: Skill[] }) => (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {skills.map((skill) => (
+        <div
+          key={skill.name}
+          className="group flex flex-col p-4 bg-gray-900/30 border border-gray-800 rounded hover:border-gray-600 transition-colors"
+        >
+          <div className="flex items-center gap-3 mb-3">
+
+            {skill.name === "ShadCN" ? (
+              <img src={shadcn} className="w-8 h-8" />
+            ) : skill.name === "AntDesign" ? (
+              <img src={antd} className="w-8 h-8" />
+            ) : (
+              <img
+                src={`https://skillicons.dev/icons?i=${getSkillIconName(skill.name.replace(/\s/g, ""))}`}
+                className="w-8 h-8"
+              />
+            )}
+
+            <span>{skill.name}</span>
+          </div>
+
+          <div className="w-full bg-gray-800/80 h-1 rounded">
+            <div className="h-full bg-gray-300" style={{ width: `${skill.level * 20}%` }} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 
   const SkillCategory = ({
     title,
     icon,
     skills,
+    slugs,
   }: {
-    title: string;
-    icon: React.ReactNode;
-    skills: Skill[];
-  }) => (
-    <div className="mb-12">
-      <div className="flex items-center gap-2 mb-6 text-gray-200">
-        {icon}
-        <h3 className="text-lg font-bold">{title}</h3>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-        {skills.map((skill) => (
-          <div
-            key={skill.name}
-            className="group flex flex-col p-4 bg-gray-900/30 border border-gray-800 rounded hover:border-gray-600 transition-colors"
-          >
-            <div className="flex items-center gap-3 mb-3">
-              {skill.name == "ShadCN" ? (
-                <img
-                  src={shadcn}
-                  alt={skill.name}
-                  className="w-8 h-8 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-              ) : skill.name == "AntDesign" ? (
-                <img
-                  src={antd}
-                  alt={skill.name}
-                  className="w-8 h-8 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-              ) : (
-                <img
-                  src={`https://skillicons.dev/icons?i=${getSkillIconName(
-                    skill.name.replace(/\s/g, "")
-                  )}`}
-                  alt={skill.name}
-                  className="w-8 h-8 rounded-sm opacity-80 group-hover:opacity-100 transition-opacity"
-                />
-              )}
+    title: string
+    icon: any
+    skills: Skill[]
+    slugs: string[]
+  }) => {
+    const [open, setOpen] = useState(false)
+    const images = slugs.map((s) => `https://cdn.simpleicons.org/${s}/${s}`)
 
-              <span className="text-sm font-medium text-gray-300">
-                {skill.name}
-              </span>
-            </div>
-            {/* Minimal Progress Bar */}
-            <div className="w-full bg-gray-800 h-1 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-gray-500 group-hover:bg-white transition-colors duration-300"
-                style={{ width: `${(skill.level || 0) * 20}%` }}
-              />
-            </div>
-            <div className="mt-1 text-[10px] text-gray-600 font-mono text-right">
-              Level {skill.level}/5
-            </div>
+    return (
+      <Collapsible open={open} onOpenChange={setOpen} className="mb-6 rounded-lg border border-gray-900 p-6">
+        <CollapsibleTrigger className="w-full flex justify-between items-center cursor-pointer">
+          <div className="flex items-center gap-2">{icon}<span className="font-bold">{title}</span></div>
+          <ChevronDown className={`transition ${open ? "rotate-180" : ""}`} />
+        </CollapsibleTrigger>
+
+        <CollapsibleContent className="space-y-6 pt-6">
+          {/* icon cloud */}
+          <div className="h-56 rounded-lg border border-gray-800 relative overflow-hidden">
+            <IconCloud images={images} />
           </div>
-        ))}
-      </div>
-    </div>
-  );
+
+          <SkillBlock skills={skills} />
+        </CollapsibleContent>
+      </Collapsible>
+    )
+  }
 
   return (
-    <section
-      id="skills"
-      className="py-16 px-4 md:px-0 bg-black text-white border-b border-gray-900"
-    >
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h2 className="text-lg font-mono text-gray-500 mb-12 tracking-wider uppercase opacity-80">
-          // Tech Stack
-        </h2>
+    <section id="skills" className="py-20 bg-black text-white border-t border-gray-900">
+      <div className="container mx-auto max-w-6xl">
 
-        <div className="space-y-4">
-          <SkillCategory
-            title="Programming"
-            icon={<Code size={18} className="text-blue-400" />}
-            skills={Programming}
-          />
-          <SkillCategory
-            title="Frontend Development"
-            icon={<Cpu size={18} className="text-blue-400" />}
-            skills={frontendSkills}
-          />
-          <SkillCategory
-            title="Backend Development"
-            icon={<Database size={18} className="text-emerald-400" />}
-            skills={backendSkills}
-          />
-          <SkillCategory
-            title="Tools & DevOps"
-            icon={<Terminal size={18} className="text-orange-400" />}
-            skills={toolSkills}
-          />
-        </div>
+        <SkillCategory
+          title="Programming"
+          icon={<Code className="text-blue-400" />}
+          skills={Programming}
+          slugs={["javascript", "typescript", "java", "python", "cplusplus"]}
+        />
+
+        <SkillCategory
+          title="Frontend Development"
+          icon={<Cpu className="text-blue-400" />}
+          skills={frontendSkills}
+          slugs={["react", "nextdotjs", "javascript", "typescript", "tailwindcss", "materialdesign"]}
+        />
+
+        <SkillCategory
+          title="Backend Development"
+          icon={<Database className="text-emerald-400" />}
+          skills={backendSkills}
+          slugs={["nodedotjs", "express", "postgresql", "mongodb", "prisma", "redis"]}
+        />
+
+        <SkillCategory
+          title="Tools & DevOps"
+          icon={<Terminal className="text-orange-400" />}
+          skills={toolSkills}
+          slugs={["docker", "git", "github", "githubactions", "aws", "vercel", "postman", "linux"]}
+        />
       </div>
     </section>
-  );
-};
+  )
+}

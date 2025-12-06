@@ -2,25 +2,29 @@ import { useState, useEffect } from "react";
 import {
   Home,
   User,
-  Wrench,
   FolderKanban,
   BriefcaseBusiness,
   Mail,
   Moon,
   Sun,
 } from "lucide-react";
+
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { Dock, DockIcon } from "@/components/ui/dock";
+import { Separator } from "@/components/ui/separator";
+
+import { cn } from "@/lib/utils";
+import { Toaster } from "./ui/toaster";
+
 import { mockData } from "../mock";
 
 import HeroSection from "./sections/HeroSection";
 import AboutSection from "./sections/AboutSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
-import EducationSection from "./sections/EducationSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
-import { Toaster } from "./ui/toaster";
-import { Separator } from "./ui/separator";
-import { SkillsSection } from "./sections/SkillsSection";
+
 
 const Portfolio = () => {
   const [data] = useState(mockData);
@@ -32,7 +36,6 @@ const Portfolio = () => {
   const navigationItems = [
     { id: "hero", label: "Home", icon: Home },
     { id: "about", label: "About", icon: User },
-    { id: "skills", label: "Skills", icon: Wrench },
     { id: "projects", label: "Projects", icon: FolderKanban },
     { id: "experience", label: "Work", icon: BriefcaseBusiness },
     { id: "contact", label: "Contact", icon: Mail },
@@ -43,7 +46,6 @@ const Portfolio = () => {
       const sections = [
         "hero",
         "about",
-        "skills",
         "projects",
         "experience",
         "contact",
@@ -63,17 +65,15 @@ const Portfolio = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Theme handling – default to dark
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.body.classList.add("bg-slate-950");
-      document.body.classList.remove("bg-slate-50");
     } else {
       document.documentElement.classList.remove("dark");
       document.body.classList.remove("bg-slate-950");
@@ -93,100 +93,89 @@ const Portfolio = () => {
       const next = prev === "dark" ? "light" : "dark";
       if (next === "light") {
         setShowThemeMessage(true);
-        setTimeout(() => {
-          setShowThemeMessage(false);
-        }, 2000);
+        setTimeout(() => setShowThemeMessage(false), 2000);
       }
       return next;
     });
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 pb-24">
-      <div className="absolute fixed z-100 flex items-center justify-center ml-1 top-2 right-2 block md:hidden ">
-        {showThemeMessage && (
-          <div className="absolute top-12 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
-            Sorry i hate light mode :)
-          </div>
-        )}
-        <button
-          onClick={handleThemeToggle}
-          className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900/80 hover:bg-gray-800 transition-all"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? (
-            <Moon className="w-5 h-5 text-gray-300" />
-          ) : (
-            <Sun className="w-5 h-5 text-yellow-400" />
-          )}
-        </button>
-      </div>
+    <div className="min-h-screen bg-slate-950 text-slate-50 relative">
+      
       {/* Sections */}
       <HeroSection data={data.personal} />
       <AboutSection data={data.personal} />
-      <SkillsSection />
       <ProjectsSection data={data.projects} />
       <ExperienceSection data={data.experience} />
+      
       <Separator className="bg-gray-800 w-full h-0.5" />
-      <EducationSection data={data.education} />
+      
       <ContactSection />
       <Footer data={data.personal} />
+      
       <Toaster />
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-10 left-0 right-0 z-50 backdrop-blur-md">
-        <div className="max-w-3xl mx-auto px-4 py-2 flex items-center justify-between gap-0.5">
+
+      {/* ===== BOTTOM DOCK NAVIGATION ===== */}
+      <TooltipProvider delayDuration={20}>
+        <Dock className="fixed bottom-8 left-0 right-0 z-50 border-none gap-4">
           {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
 
             return (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className="flex-1 flex justify-center"
-              >
-                <div
-                  className={`flex items-center justify-center gap-2 px-3 py-2 rounded-full transition-all duration-300 ${
-                    isActive
-                      ? "bg-gray-900 text-white-400 max-w-[160px]"
-                      : "text-gray-400 hover:text-gray-100 hover:bg-gray-800/60 max-w-[60px]"
-                  }`}
-                >
-                  <Icon
-                    className={`w-5 h-5 transition-transform ${
-                      isActive ? "scale-110" : "scale-100"
-                    }`}
-                  />
-                  {isActive && (
-                    <span className="text-xs font-medium truncate">
-                      {item.label}
-                    </span>
-                  )}
-                </div>
-              </button>
+              <DockIcon key={item.id}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={() => handleNavClick(item.id)}
+                      className={cn(
+                        "size-12 rounded-full flex items-center justify-center border border-gray-800 transition",
+                        isActive
+                          ? "bg-gray-900 text-white scale-110"
+                          : "bg-gray-800/40 text-gray-400 hover:text-gray-100"
+                      )}
+                    >
+                      <Icon className="size-5" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="text-xs">{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
             );
           })}
-          <div className="flex items-center justify-center ml-1 hidden md:block">
+
+          <Separator orientation="vertical" className="h-full mx-2" />
+
+          {/* Theme Toggle */}
+          <DockIcon>
             {showThemeMessage && (
-              <div className="absolute -top-9 left-1/2 -translate-x-1/2 bg-gray-900 text-[15px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
-                Sorry I hate light mode :)
-              </div>
-            )}
-            <button
-              onClick={handleThemeToggle}
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900/80 hover:bg-gray-800 transition-all"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Moon className="w-5 h-5 text-gray-300" />
-              ) : (
-                <Sun className="w-5 h-5 text-yellow-400" />
-              )}
-            </button>
-          </div>
-        </div>
-      </nav>
+    <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-900 text-[10px] text-gray-100 px-3 py-1 rounded-full shadow-lg border border-gray-700 whitespace-nowrap">
+      Sorry I hate light mode :)
+    </div>
+  )}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+        onClick={handleThemeToggle}
+        className="size-12 rounded-full flex items-center justify-center border border-gray-800 bg-gray-900/80 hover:bg-gray-800"
+      >
+        {theme === "dark" ? (
+          <Moon className="w-5 h-5 text-gray-300" />
+        ) : (
+          <Sun className="w-5 h-5 text-yellow-400" />
+        )}
+      </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Theme</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon>
+        </Dock>
+      </TooltipProvider>
     </div>
   );
 };
