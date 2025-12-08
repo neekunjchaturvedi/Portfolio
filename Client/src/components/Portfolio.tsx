@@ -29,6 +29,7 @@ import ProjectsSection from "./sections/ProjectsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
+import { SkillsSection } from "./sections/SkillsSection";
 
 const Portfolio = () => {
   const [data] = useState(mockData);
@@ -102,6 +103,7 @@ const Portfolio = () => {
       {/* Sections */}
       <HeroSection data={data.personal} />
       <AboutSection data={data.personal} />
+      <SkillsSection />
       <ProjectsSection data={data.projects} />
       <ExperienceSection data={data.experience} />
 

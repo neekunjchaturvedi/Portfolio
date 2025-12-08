@@ -1,7 +1,3 @@
-// Updated mock data for Neekunj's Portfolio
-import moovicart from "./assets/work/moovicart_logo.jpeg";
-import wallstorie from "./assets/work/wallstorie.png";
-import outceedo from "./assets/work/outceedo.png";
 export const mockData = {
   personal: {
     name: "Neekunj Chaturvedi",
