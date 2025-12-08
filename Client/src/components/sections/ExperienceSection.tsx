@@ -1,13 +1,9 @@
-import { Card, CardContent } from "../ui/card";
-import { Briefcase, Calendar, Building2, ChevronRight } from "lucide-react";
-
 interface ExperienceItem {
   id: string | number;
   role: string;
   duration: string;
   company: string;
   description: string;
-  img: string;
 }
 
 interface ExperienceSectionProps {
