@@ -16,11 +16,7 @@ type FooterData = {
   name: string;
 };
 
-interface FooterProps {
-  data: FooterData;
-}
-
-const Footer: React.FC<FooterProps> = ({ data }) => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -44,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ data }) => {
               Neekunj Chaturvedi
             </h3>
             <p className="text-gray-500 text-sm">
-             // I actually build softwares that scales
+              // I actually build softwares that scales
             </p>
           </div>
 

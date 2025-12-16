@@ -1,6 +1,5 @@
-import { Button } from "../ui/button";
-import { Github, File, Workflow, FileText, ArrowDown } from "lucide-react";
-import { FlickeringGrid } from "@/components/ui/flickering-grid"
+import { Github, FileText, Book } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 type HeroSectionData = {
   headline: string;
@@ -14,6 +13,7 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
+  const nav = useNavigate();
   const handleResumeClick = () => {
     // Mock action - would open/download resume
     window.open(
@@ -40,9 +40,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
       id="hero"
       className="min-h-screen bg-black text-white flex flex-col justify-center relative border-b border-gray-900"
     >
-      
       <div className="container mx-auto px-6 md:px-4 max-w-4xl z-20">
-        
         {/* Minimal Status Indicator */}
         <div className="flex items-center gap-3 mb-8 opacity-80">
           <span className="font-mono text-sm text-gray-400 tracking-widest uppercase">
@@ -60,7 +58,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
         </p>
 
         {/* Minimal Actions */}
-        <div className="flex flex-wrap items-center gap-6">
+        <div className="flex flex-wrap items-center gap-6 mb-6">
           <button
             onClick={handleResumeClick}
             className="group flex items-center gap-2 text-white border-b border-white pb-1 hover:text-gray-300 hover:border-gray-500 transition-all"
@@ -77,6 +75,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
             <span className="font-medium">GitHub</span>
           </button>
         </div>
+        <button
+          className="group flex items-center gap-2 text-gray-400 border-b border-transparent pb-1 hover:text-white hover:border-white transition-all"
+          onClick={() => {
+            nav("/blogs");
+          }}
+        >
+          <Book size={18} /> Read My Journal
+        </button>
       </div>
 
       {/* Subtle Scroll Indicator */}

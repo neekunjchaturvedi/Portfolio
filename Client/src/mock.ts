@@ -176,3 +176,7 @@ export const mockData = {
   ],
   certifications: [{ id: 1, title: "GitHub Foundations", date: "Feb 2024" }],
 };
+
+
+
+

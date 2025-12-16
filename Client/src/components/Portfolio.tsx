@@ -7,6 +7,7 @@ import {
   Mail,
   Moon,
   Sun,
+  Book,
 } from "lucide-react";
 
 import {
@@ -30,6 +31,7 @@ import ExperienceSection from "./sections/ExperienceSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
 import { SkillsSection } from "./sections/SkillsSection";
+import { useNavigate } from "react-router-dom";
 
 const Portfolio = () => {
   const [data] = useState(mockData);
@@ -44,6 +46,7 @@ const Portfolio = () => {
     { id: "projects", label: "Projects", icon: FolderKanban },
     { id: "experience", label: "Work", icon: BriefcaseBusiness },
     { id: "contact", label: "Contact", icon: Mail },
+    { id: "blogs", label: "Blogs", icon: Book, url: "/blogs" },
   ];
 
   useEffect(() => {
@@ -79,9 +82,12 @@ const Portfolio = () => {
       document.body.classList.add("bg-slate-50");
     }
   }, [theme]);
-
+  const nav = useNavigate();
   const handleNavClick = (sectionId: string) => {
     const element = document.getElementById(sectionId);
+    if (sectionId == "blogs") {
+      nav("/blogs");
+    }
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -110,7 +116,7 @@ const Portfolio = () => {
       <Separator className="bg-gray-800 w-full h-0.5" />
 
       <ContactSection />
-      <Footer data={data.personal} />
+      <Footer />
 
       <Toaster />
 
