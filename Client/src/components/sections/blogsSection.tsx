@@ -55,11 +55,11 @@ const MinimalBlogListSection: React.FC<MinimalBlogListSectionProps> = ({
                 {post.excerpt}
               </p>
 
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs bg-gray-900 text-gray-500 px-2 py-1 rounded"
+                    className="text-xs bg-gray-900 text-gray-400 px-2 py-1 rounded whitespace-nowrap"
                   >
                     {tag}
                   </span>
