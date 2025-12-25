@@ -81,7 +81,7 @@ export const BLOG_POSTS: BlogPost[] = [
     id: "abuse",
     title: "Building Abuse",
     excerpt: "Every Teminal Deserves Personality.",
-    date: "Feb 28, 2024",
+    date: "Nov 28, 2025",
     readTime: "8 min read",
     tags: ["CLI-Tool", "JavaScript", "CommanderJS", "Npm", "ChalkJS"],
     content: (

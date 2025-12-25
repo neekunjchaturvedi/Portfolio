@@ -125,7 +125,7 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
             }
             className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1"
           >
-            <span className="font-mono">view_all_repositories</span>
+            <span className="font-mono">Github</span>
             {/* <ExternalLink size={14} /> */}
           </button>
         </div>
