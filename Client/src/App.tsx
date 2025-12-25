@@ -7,7 +7,6 @@ import {
   useNavigate,
 } from "react-router-dom";
 
-import { LoadingScreen } from "./lib/loadingScreen";
 import BlogPostView from "./components/sections/blogPostView";
 import Footer from "./components/sections/Footer";
 import { BLOG_POSTS } from "./components/sections/blogs";
@@ -65,7 +64,7 @@ export default function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   if (!isLoaded) {
-    return <LoadingScreen onComplete={() => setIsLoaded(true)} />;
+    // return <LoadingScreen onComplete={() => setIsLoaded(true)} />;
   }
 
   return (

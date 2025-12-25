@@ -108,10 +108,10 @@ const Portfolio = () => {
     <div className="min-h-screen bg-slate-950 text-slate-50 relative">
       {/* Sections */}
       <HeroSection data={data.personal} />
-      <AboutSection data={data.personal} />
-      <SkillsSection />
-      <ProjectsSection data={data.projects} />
+      {/* <AboutSection data={data.personal} /> */}
+      {/* <SkillsSection /> */}
       <ExperienceSection data={data.experience} />
+      <ProjectsSection data={data.projects} />
 
       <Separator className="bg-gray-800 w-full h-0.5" />
 

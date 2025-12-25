@@ -2,11 +2,11 @@ export const mockData = {
   personal: {
     name: "Neekunj Chaturvedi",
     title: "Full Stack Developer",
-    headline: "Hi, I'm Neekunj Chaturvedi, a Full Stack Dev.",
+    headline: "Hi, I'm Neekunj Chaturvedi, a Software Engineer.",
     subheadline:
-      "I build scalable, high-performance web applications with clean architecture and modern technologies.",
+      "I build scalable, high-performance Softwares with clean architecture and modern technologies that actually scale.",
     about:
-      "Full Stack Developer specializing in the MERN stack, scalable architectures, and efficient state management. Experienced in building performant, maintainable applications with robust API integrations and clean, modular code.",
+      "Software Engineer who builds scalable softwares from 0 —> 1 combining strong system design, modular architecture, and efficient state management. Experienced in developing production-ready systems with robust backend dev, clean abstractions, and a focus on performance, reliability, and long-term maintainability.",
 
     image:
       "https://images.unsplash.com/photo-1678856879593-5fad52ed4abe?crop=entropy&cs=srgb&fm=jpg&q=85",
@@ -58,25 +58,25 @@ export const mockData = {
   experience: [
     {
       id: 1,
-      role: "Full-Stack Developer - Intern",
+      role: "Full-Stack Software Engineer",
       company: "Outceedo (Remote)",
       duration: "July 2025 - Present",
 
       description:
-        "Worked with microservices architecture, developed APIs, integrated RESTful APIs across systems, and managed the frontend repository as the top contributor. Implemented Redux, used ShadCN for UI, and set up Slack notifications in CI/CD pipelines.",
+        "Led end-to-end development of a microservices-based platform, designing and scaling independent services using secure API architectures. Implemented message queues and RPC-based service communication to support complex integrations and real-time workflows. Served as the lead maintainer and top contributor to the frontend repository, establishing scalable UI patterns using React, Redux, and ShadCN. Architected and managed AWS infrastructure to support scaling and performance. Built real-time notification systems, internal admin panels, and support tooling.",
     },
     {
       id: 2,
-      role: "Frontend and Integration Engineer - Intern",
+      role: "Frontend and Integration Engineer",
       company: "Moovicart (Remote)",
       duration: "April 2025 - June 2025",
 
       description:
-        "Built a scalable frontend architecture using React.js, integrated RESTful APIs with robust error handling, implemented WebRTC for video calls, and improved API efficiency by 35% using Redux for state management.",
+        "Redesigned their frontend architecture to support modular architecture, high cohesion and low coupling with centralized state management via Redux. Implemented secure payment gateway integrations, handling edge cases, failures, and transaction workflows with robust error handling. Built and integrated WebRTC-based real-time video communication features. Improved overall API efficiency and frontend performance through optimized data flow and caching strategies.",
     },
     {
       id: 3,
-      role: "Full-Stack Developer - Intern",
+      role: "Full-Stack Developer",
       company: "WallStorie",
       duration: "Dec 2024 - March 2025",
 
@@ -90,7 +90,7 @@ export const mockData = {
       duration: "Dec 2024 - Present",
 
       description:
-        "Delivered Web designs for Freedom with AI, NotForCollege and delivered full-stack Website for ABMK Car Rentals (Dubai) with complete frontend and backend ",
+        "Delivered Web designs for Freedom with AI, NotForCollege and delivered full-stack Website for ABMK Car Rentals (Dubai) with complete frontend and backend. ",
     },
   ],
   education: [
@@ -176,7 +176,3 @@ export const mockData = {
   ],
   certifications: [{ id: 1, title: "GitHub Foundations", date: "Feb 2024" }],
 };
-
-
-
-
