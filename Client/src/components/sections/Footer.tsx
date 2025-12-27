@@ -26,12 +26,16 @@ const Footer = () => {
       icon: Github,
       url: "https://github.com/neekunjchaturvedi",
     },
-    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com" },
-    { name: "Email", icon: Mail, url: "mailto:hello@example.com" },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      url: "https://linkedin.com/in/neekunj-chaturvedi",
+    },
+    { name: "Email", icon: Mail, url: "mailto:neekunjchaturvedi3@gmail.com" },
   ];
 
   return (
-    <footer className="py-12 bg-black text-white">
+    <footer className="py-28 bg-black text-white">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 border-b border-gray-900 pb-12">
           {/* Top Left: Brand & Tagline */}
@@ -45,7 +49,7 @@ const Footer = () => {
           </div>
 
           {/* Top Right: Motto */}
-          <div className="flex justify-center md:justify-end gap-6 items-center">
+          {/* <div className="flex justify-center md:justify-end gap-6 items-center">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Code size={16} className="text-blue-500" />
               <span>Code Purpose</span>
@@ -54,7 +58,7 @@ const Footer = () => {
               <Heart size={16} className="text-red-500" />
               <span>Ship Love</span>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">

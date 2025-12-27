@@ -12,7 +12,7 @@ export const mockData = {
       "https://images.unsplash.com/photo-1678856879593-5fad52ed4abe?crop=entropy&cs=srgb&fm=jpg&q=85",
     resumeUrl: "https://neekunjchaturvedi.netlify.app/",
     githubUrl: "https://github.com/neekunjchaturvedi",
-    linkedinUrl: "https://linkedin.com/in/neekunj-chaturvedi-293223257",
+    linkedinUrl: "https://linkedin.com/in/neekunj-chaturvedi",
     email: "neekunjchaturvedi3@gmail.com",
   },
   skills: {
@@ -112,28 +112,73 @@ export const mockData = {
   projects: [
     {
       id: 1,
-      title: "Abuse",
+      title: "Renard",
       description:
-        "A terminal integrated tool that roasts you when you mess up on the terminal",
-      technologies: ["NodeJs", "Npm", "CommanderJS", "ChalkJS"],
-      githubUrl: "https://github.com/neekunjchaturvedi/Abuse",
-      demoUrl: "https://www.npmjs.com/package/abuse-plus",
-      timeline: "November 2025",
-      status: "Completed",
+        "Renard is a Dev productivity software which brings all your scattered LLM interations and context at one place and generates insights.",
+      technologies: [
+        "Browser-Extension",
+        "CLI-Tool",
+        "Typescript",
+        "Express",
+        "RabbitMQ",
+        "grpc",
+      ],
+      githubUrl: "",
+      demoUrl: "https://renard.live",
+      timeline: "Dec 2025 - Present",
+      status: "Building",
     },
+
     {
-      id: 2,
-      title: "ChatVerse",
+      id: 1,
+      title: "SpectraQ",
       description:
-        "Real Time Chat Application with Socket.IO for real-time communication.",
-      technologies: ["React.js", "Socket.IO", "Node.js", "Express"],
-      githubUrl: "https://github.com/neekunjchaturvedi/ChatVerse",
-      demoUrl: "",
-      timeline: "June 2025",
-      status: "Completed",
+        "HFT platform which streamlines crypto trading with State Channels for processing the trades off-chain and finally after termination pushing it on-chain. Also features Community platform built using robust sockets scaling with redis pub-sub.",
+      technologies: [
+        "Microservices",
+        "TypeScript",
+        "Express",
+        "Redis",
+        "RabbitMQ",
+        "Supabase",
+        "prisma",
+        "Redux",
+      ],
+      githubUrl: "",
+      demoUrl: "https://spectraq.org",
+      timeline: "Oct 2025 - Present",
+      status: "Building",
     },
     {
       id: 3,
+      title: "Abuse",
+      description:
+        "A terminal integrated tool that roasts you when you mess up on the terminal. Hit 250+ downloads on npm within 3 days.",
+      technologies: ["NodeJs", "Npm", "CommanderJS", "ChalkJS"],
+      githubUrl: "https://github.com/neekunjchaturvedi/Abuse",
+      demoUrl: "https://www.npmjs.com/package/abuse-plus",
+      timeline: "Nov 2025",
+      status: "Completed",
+    },
+
+    {
+      id: 4,
+      title: "SenseiX",
+      description:
+        "Dynamic Personalized Learning engine, Generates learning content in your preferred Genre, FlashCards, descriptions, Detailed Explainaions all gamified.",
+      technologies: [
+        "React Native",
+        "Google GenAI SDK",
+        "Typescipt",
+        "Express",
+      ],
+      githubUrl: "https://github.com/neekunjchaturvedi/senseiX",
+      demoUrl: "",
+      timeline: "Dec 2025",
+      status: "Completed",
+    },
+    {
+      id: 5,
       title: "D-Hosting",
       description:
         "Decentralized Web Hosting Platform with an inbuilt Search Engine using IPFS and Solidity smart contracts.",
@@ -151,7 +196,7 @@ export const mockData = {
       status: "Completed",
     },
     {
-      id: 4,
+      id: 6,
       title: "TopCode",
       description:
         "Code editor with multi-language support for compiling and running code.",

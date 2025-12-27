@@ -94,13 +94,16 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
               </div>
 
               <div className="flex items-center gap-4 pt-6 border-t border-gray-800/50">
-                <button
-                  onClick={() => handleGithubClick(project.githubUrl)}
-                  className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
-                >
-                  <Github size={16} />
-                  <span>Code</span>
-                </button>
+                {project.githubUrl && (
+                  <button
+                    onClick={() => handleGithubClick(project.githubUrl)}
+                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                  >
+                    <Github size={16} />
+                    <span>Code</span>
+                  </button>
+                )}
+
                 {project.demoUrl && (
                   <button
                     onClick={() => handleDemoClick(project.demoUrl)}
@@ -115,20 +118,7 @@ const ProjectsSection = ({ data }: ProjectsSectionProps) => {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <button
-            onClick={() =>
-              window.open(
-                "https://github.com/neekunjchaturvedi?tab=repositories",
-                "_blank"
-              )
-            }
-            className="inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1"
-          >
-            <span className="font-mono">Github</span>
-            {/* <ExternalLink size={14} /> */}
-          </button>
-        </div>
+        
       </div>
     </section>
   );

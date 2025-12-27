@@ -30,6 +30,7 @@ import ProjectsSection from "./sections/ProjectsSection";
 import ContactSection from "./sections/ContactSection";
 import Footer from "./sections/Footer";
 import { useNavigate } from "react-router-dom";
+import AboutSection from "./sections/AboutSection";
 
 const Portfolio = () => {
   const [data] = useState(mockData);
@@ -109,7 +110,7 @@ const Portfolio = () => {
     <div className="min-h-screen bg-slate-950 text-slate-50 relative selection:bg-cyan-500/30">
       {/* Sections */}
       <HeroSection data={data.personal} />
-      {/* <AboutSection data={data.personal} /> */}
+      <AboutSection />
       {/* <SkillsSection /> */}
       <ExperienceSection data={data.experience} />
       <ProjectsSection data={data.projects} />
@@ -143,9 +144,7 @@ const Portfolio = () => {
                           // Base State
                           "text-white hover:text-white",
                           // Active State Styling
-                          isActive
-                            ? "bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)]"
-                            : "hover:bg-white/5"
+                          isActive ? "bg-white/5 text-gray-300" : "hover:bg-white/5"
                         )}
                       >
                         <Icon
