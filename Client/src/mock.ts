@@ -63,7 +63,7 @@ export const mockData = {
       duration: "July 2025 - Present",
 
       description:
-        "Led end-to-end development of a microservices-based platform, designing and scaling independent services using secure API architectures. Implemented message queues and RPC-based service communication to support complex integrations and real-time workflows. Served as the lead maintainer and top contributor to the frontend repository, establishing scalable UI patterns using React, Redux, and ShadCN. Architected and managed AWS infrastructure to support scaling and performance. Built real-time notification systems, internal admin panels, and support tooling.",
+        "Engineered end-to-end development of a microservices-based platform under Senior Engineer, designing and scaling independent services using secure API architectures. Implemented message queues and RPC-based service communication to support complex integrations and real-time workflows. Served as the lead maintainer and top contributor to the frontend repository, establishing scalable UI patterns using React, Redux, and ShadCN. Architected and managed AWS infrastructure to support scaling and performance. Built real-time notification systems, internal admin panels, and support tooling.",
     },
     {
       id: 2,
