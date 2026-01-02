@@ -336,4 +336,264 @@ One or more choices were empty. (post-processing if applied)
       </div>
     ),
   },
+  {
+    id: "spectraq",
+    title: "Architecting Spectra Q",
+    excerpt: "Scaling real-time communities without breaking the socket layer.",
+    date: "Jan 2, 2025",
+    readTime: "10 min read",
+    tags: [
+      "Microservices",
+      "Socket.IO",
+      "Redis",
+      "PubSub",
+      "Message Queues",
+      "Authentication",
+      "TypeScript",
+      "Distributed Systems",
+    ],
+    content: (
+      <div className="space-y-6 text-gray-300 leading-relaxed">
+        <p>
+          Building a real-time community platform sounds easy until you hit
+          scale. Chats work fine with a few users — then suddenly a single
+          community has thousands of concurrent members, message fan-out
+          explodes, and your socket server starts choking.
+        </p>
+
+        <p>
+          <strong>Spectra Q</strong> is a community-first chat platform built to
+          handle that exact problem. It’s designed from day one to support
+          large-scale communities without turning real-time messaging into a
+          bottleneck.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          What is Spectra Q?
+        </h3>
+
+        <p>
+          Spectra Q is an advanced community platform built on a microservices
+          architecture. Each major concern is isolated into its own service:
+        </p>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Authentication Service</li>
+          <li>Community Management Service</li>
+          <li>Notification & Mail Service</li>
+          <li>Real-time Chat Service</li>
+        </ul>
+
+        <p>
+          The core challenge wasn’t building chat — it was scaling it reliably
+          while keeping latency low and system complexity manageable across
+          multiple services.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Authentication at Scale
+        </h3>
+
+        <p>
+          Authentication in Spectra Q goes beyond basic email-password flows.
+          The platform uses an advanced OTP-based verification system designed
+          for both security and performance.
+        </p>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Time-bound OTPs with strict expiry windows</li>
+          <li>Hash-based OTP storage to avoid plaintext secrets</li>
+          <li>Rate-limited verification attempts to prevent abuse</li>
+          <li>Stateless validation backed by persistent storage</li>
+        </ul>
+
+        <p>
+          This approach keeps the authentication service lightweight while
+          maintaining strong guarantees against replay attacks and brute-force
+          attempts.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Message Queues for Mail & Notifications
+        </h3>
+
+        <p>
+          Email delivery and notifications are intentionally decoupled from
+          user-facing APIs. Instead of sending emails synchronously, Spectra Q
+          uses message queues to offload all outbound communication.
+        </p>
+
+        <p>
+          When an event occurs — account verification, OTP generation, or
+          critical notification — the auth or community service publishes a
+          message to the queue.
+        </p>
+
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>Service emits a mail or notification event</li>
+          <li>Event is pushed into a message queue</li>
+          <li>Dedicated mail workers consume and process jobs</li>
+          <li>Retries and failures are handled asynchronously</li>
+        </ol>
+
+        <p>
+          This guarantees that slow or failing email providers never block core
+          application flows.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          The Scaling Problem
+        </h3>
+
+        <p>
+          Traditional Socket.IO setups assume a single room per community. That
+          works until a room grows too large:
+        </p>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Broadcast latency increases</li>
+          <li>Single-node memory usage spikes</li>
+          <li>Horizontal scaling becomes painful</li>
+        </ul>
+
+        <p>
+          I needed a model where communities could scale horizontally without
+          forcing all users into a single socket room.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Room-Based Sharding Strategy
+        </h3>
+
+        <p>
+          In Spectra Q, every community has a primary identifier —
+          <code>communityId</code>. Instead of binding all users to one room,
+          the chat service dynamically shards communities into multiple rooms.
+        </p>
+
+        <p>The flow looks like this:</p>
+
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>User joins a community</li>
+          <li>User is connected to a socket room mapped to that community</li>
+          <li>
+            When a room reaches a threshold, a new room is created for the same
+            community
+          </li>
+          <li>Room IDs are registered and tracked in Redis</li>
+        </ol>
+
+        <p>
+          Each room handles a subset of users, dramatically reducing broadcast
+          load per room.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Redis Pub/Sub for Message Fan-Out
+        </h3>
+
+        <p>
+          The real magic happens when messages need to cross room boundaries.
+          Instead of direct socket fan-out, Spectra Q uses Redis Pub/Sub as the
+          message backbone.
+        </p>
+
+        <pre className="bg-neutral-900 p-4 rounded-lg overflow-x-auto text-sm font-mono text-gray-200">
+          {`community:{communityId}:messages`}
+        </pre>
+
+        <p>When a message is sent in any room belonging to a community:</p>
+
+        <ol className="list-decimal pl-6 space-y-2">
+          <li>The message is published to Redis</li>
+          <li>All chat instances subscribed to that channel receive it</li>
+          <li>Each instance forwards the message to its local rooms</li>
+        </ol>
+
+        <p>
+          This decouples socket rooms from message distribution and allows the
+          system to scale horizontally with zero awareness between nodes.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Technology Stack
+        </h3>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>
+            <strong>Node.js + Express</strong> — Lightweight, fast, and
+            battle-tested
+          </li>
+          <li>
+            <strong>TypeScript</strong> — Strict contracts across services
+          </li>
+          <li>
+            <strong>Socket.IO</strong> — Real-time bidirectional communication
+          </li>
+          <li>
+            <strong>Redis / Valkey</strong> — Pub/Sub backbone and ephemeral
+            state
+          </li>
+          <li>
+            <strong>Message Queues</strong> — Async processing for mails and
+            events
+          </li>
+          <li>
+            <strong>Prisma + Supabase</strong> — Type-safe persistence layer
+          </li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Why This Architecture Works
+        </h3>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>
+            <strong>Horizontal Scalability</strong> — Services scale
+            independently
+          </li>
+          <li>
+            <strong>Low Latency</strong> — Small socket rooms and async
+            pipelines
+          </li>
+          <li>
+            <strong>Fault Isolation</strong> — Failures don’t cascade across
+            services
+          </li>
+          <li>
+            <strong>Backpressure Handling</strong> — Queues absorb spikes safely
+          </li>
+        </ul>
+
+        <p>
+          The result is a system that feels simple from the outside but is
+          extremely resilient under real-world load.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">
+          Lessons Learned
+        </h3>
+
+        <p>
+          Real-time systems fail not because of sockets, but because of
+          synchronous assumptions. Once you embrace async boundaries — message
+          queues, pub/sub, and stateless services — scaling becomes predictable.
+        </p>
+
+        <h3 className="text-xl font-bold text-white mt-8 mb-4">What’s Next</h3>
+
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Message persistence & replay</li>
+          <li>Presence-aware load balancing</li>
+          <li>Typed event contracts across services</li>
+          <li>Advanced analytics for community activity</li>
+        </ul>
+
+        <p className="italic text-gray-400">
+          Spectra Q is still evolving — but its foundations are designed to
+          scale from day one.
+        </p>
+      </div>
+    ),
+  },
 ];

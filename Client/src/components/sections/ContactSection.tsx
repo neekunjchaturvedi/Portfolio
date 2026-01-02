@@ -1,17 +1,11 @@
-import { useState } from "react";
-import { Send, Mail, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin, Calendar } from "lucide-react";
 
 const ContactSection = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
-
   const socialLinks = [
     {
       name: "GitHub",
       icon: Github,
-      href: "https://github.com/neekunjchaturvedi",
+      href: "https://github.com/neekunjch aturvedi",
       label: "Code",
     },
     {
@@ -25,6 +19,13 @@ const ContactSection = () => {
       icon: Mail,
       href: "mailto:neekunjchaturvedi3@gmail.com",
       label: "Message",
+    },
+    {
+      name: "Cal.com",
+      icon: Calendar,
+      href: "https://cal.com/neekunj-chaturvedi-jn7voh",
+      label: "Book a call",
+      isPrimary: true,
     },
   ];
 
@@ -46,24 +47,44 @@ const ContactSection = () => {
           </p>
 
           <div className="space-y-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 text-gray-400 hover:text-white transition-colors group"
-              >
-                <span className="p-2 border border-gray-800 rounded-lg group-hover:border-gray-600 transition-colors">
-                  <social.icon size={20} />
-                </span>
-                <span className="font-medium">{social.label}</span>
-              </a>
-            ))}
+            {socialLinks.map((social) => {
+              // Styling logic to highlight the Cal.com link
+              const isPrimary = (social as any).isPrimary;
+
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-4 transition-colors group ${
+                    isPrimary ? "text-white" : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  <span
+                    className={`p-2 border rounded-lg transition-colors ${
+                      isPrimary
+                        ? "bg-white border-white text-black group-hover:bg-gray-200"
+                        : "border-gray-800 group-hover:border-gray-600"
+                    }`}
+                  >
+                    <social.icon size={20} />
+                  </span>
+                  <span
+                    className={`font-medium ${isPrimary ? "font-bold" : ""}`}
+                  >
+                    {social.label}
+                  </span>
+                  {isPrimary && (
+                    <span className="ml-auto text-xl font-mono text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                      ← Let's Talk
+                    </span>
+                  )}
+                </a>
+              );
+            })}
           </div>
         </div>
-
-        {/* Right Column */}
       </div>
     </section>
   );
