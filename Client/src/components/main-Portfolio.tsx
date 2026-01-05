@@ -107,7 +107,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-[#e5e5e5] font-mono selection:bg-white selection:text-black flex flex-col justify-between relative overflow-x-hidden">
       {/* BACKGROUND GRID */}
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
       {/* --- MAIN CONTENT --- */}
       <main className="flex-grow w-full max-w-3xl mx-auto px-6 pt-16 md:pt-20 pb-10 z-10 flex flex-col justify-center space-y-12">
