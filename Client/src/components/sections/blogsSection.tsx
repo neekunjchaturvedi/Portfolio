@@ -28,7 +28,7 @@ const MinimalBlogListSection: React.FC<MinimalBlogListSectionProps> = ({
             size={20}
             className="group-hover:-translate-x-1 transition-transform"
           />
-          <span className="font-mono text-sm">Return to portfolio</span>
+          <span className="font-mono text-sm">Return to Base</span>
         </button>
         <h2 className="text-lg font-mono text-emerald-400 mb-12 tracking-wider uppercase opacity-80">
           // Engineering Journal
