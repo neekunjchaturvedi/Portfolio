@@ -8,6 +8,7 @@ import {
   ArrowBigUp,
   ArrowUp,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 type FooterData = {
   githubUrl: string;
@@ -19,6 +20,7 @@ type FooterData = {
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const nav = useNavigate();
 
   const socialLinks = [
     {
@@ -39,7 +41,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 border-b border-gray-900 pb-12">
           {/* Top Left: Brand & Tagline */}
-          <div className="text-center md:text-left">
+          <div
+            className="text-center md:text-left cursor-pointer"
+            onClick={() => {
+              nav("/");
+            }}
+          >
             <h3 className="text-2xl font-bold mb-2 text-white">
               Neekunj Chaturvedi
             </h3>

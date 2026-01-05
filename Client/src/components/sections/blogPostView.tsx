@@ -61,10 +61,20 @@ const BlogPostView: React.FC<BlogPostViewProps> = ({ post, onBack }) => {
         <div className="mt-20 pt-12 border-t border-gray-900 flex justify-between items-center">
           <span className="text-gray-500 text-sm">Thanks for reading!</span>
           <div className="flex gap-4">
-            <button className="text-gray-500 hover:text-blue-400 transition-colors">
+            <button
+              className="text-gray-500 hover:text-blue-400 transition-colors"
+              onClick={() => {
+                window.open("https://x.com/neekunj_ch");
+              }}
+            >
               <Twitter size={20} />
             </button>
-            <button className="text-gray-500 hover:text-blue-600 transition-colors">
+            <button
+              className="text-gray-500 hover:text-blue-600 transition-colors"
+              onClick={() => {
+                window.open("https://linkedin.com/in/neekunj-chaturvedi");
+              }}
+            >
               <Linkedin size={20} />
             </button>
           </div>

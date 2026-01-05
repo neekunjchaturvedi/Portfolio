@@ -12,7 +12,7 @@ import Footer from "./components/sections/Footer";
 import { BLOG_POSTS } from "./components/sections/blogs";
 import MinimalBlogListSection from "./components/sections/blogsSection";
 import Portfolio from "./components/main-Portfolio";
-import Cat from "./components/cat";
+import "./App.css";
 
 /* ---------------- Blog Post Wrapper ---------------- */
 function BlogPostRoute() {
@@ -55,7 +55,6 @@ function HomeRoute() {
 
   return (
     <main className="bg-black min-h-screen font-sans selection:bg-gray-800 selection:text-white">
-      
       <Portfolio />
     </main>
   );
