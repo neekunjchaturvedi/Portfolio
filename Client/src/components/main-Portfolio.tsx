@@ -134,7 +134,7 @@ const Portfolio = () => {
               Hey, I'm Neekunj Chaturvedi
             </h1>
             <h2 className="text-lg md:text-xl text-neutral-400 font-medium">
-              I Ship systems that don't fail.
+              I build systems that don't fail.
             </h2>
           </div>
 
@@ -149,7 +149,7 @@ const Portfolio = () => {
               <span className="text-white decoration-wavy underline decoration-neutral-700 underline-offset-4">
                 Solana
               </span> */}
-              . Mostly failing, sometimes shipping.
+              . Yeah, I actually Engineer softwares.
             </p>
 
             <p className="border-l-2 border-white/20 pl-4 py-1 italic text-neutral-300 bg-neutral-900/30 rounded-r-lg">
