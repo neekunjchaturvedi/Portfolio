@@ -105,8 +105,11 @@ const Portfolio = () => {
   const archivedProjects = PROJECTS.filter((p) => p.status === "Completed");
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#e5e5e5] font-mono selection:bg-white selection:text-black flex flex-col justify-between relative overflow-x-hidden">
-      {/* BACKGROUND GRID */}
+    <div
+      className="min-h-screen bg-[#050505] text-[#e5e5e5] font-mono
+  selection:bg-blue-500/30 selection:text-white
+  flex flex-col justify-between relative overflow-x-hidden"
+    >
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
 
       {/* --- MAIN CONTENT --- */}
