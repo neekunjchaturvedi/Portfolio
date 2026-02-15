@@ -11,17 +11,9 @@ import { useNavigate } from "react-router-dom";
 // Assuming this matches your file structure
 import ConnectWidgets from "./sections/Connect";
 import { Typewriter } from "./sections/typewriter";
+import { Achievements, StickerBoard } from "./sections/achievements";
 
 const PROJECTS = [
-  {
-    id: 1,
-    title: "Renard",
-    description: "Dev productivity platform centralizing LLM interactions.",
-    githubUrl: "",
-    demoUrl: "https://renard.live",
-    status: "Building",
-    tech: "Microservices",
-  },
   {
     id: 2,
     title: "SpectraQ",
@@ -30,6 +22,15 @@ const PROJECTS = [
     demoUrl: "https://spectraq.org",
     status: "Building",
     tech: "HFT/Redis",
+  },
+  {
+    id: 7,
+    title: "Galade",
+    description: "Next gen security layer for AI agents.",
+    githubUrl: "",
+    demoUrl: "https://galade.xyz",
+    status: "Building",
+    tech: "AI/Web3",
   },
   {
     id: 3,
@@ -143,23 +144,21 @@ const Portfolio = () => {
 
           <div className="space-y-4 text-sm md:text-base leading-relaxed text-neutral-400 max-w-2xl">
             <p>
-              I just hang around building software. Exploring the world of code,
-              recently getting messy with{" "}
+              I just hang around building software. Currently messing around
+              with{" "}
+              <span className="text-white decoration-wavy underline decoration-neutral-700 underline-offset-4">
+                AI agents
+              </span>{" "}
+              and{" "}
               <span className="text-white decoration-wavy underline decoration-neutral-700 underline-offset-4">
                 Web3
               </span>
-              {/* and{" "}
-              <span className="text-white decoration-wavy underline decoration-neutral-700 underline-offset-4">
-                Solana
-              </span> */}
               . Yeah, I actually Engineer softwares.
             </p>
 
             <p className="border-l-2 border-white/20 pl-4 py-1 italic text-neutral-300 bg-neutral-900/30 rounded-r-lg">
-              Co-Founder @{" "}
-              <span className="text-white font-bold">Renard.live</span>. I quit
-              DSA to build things people actually use. Now scaling Renard
-              full-time—no more inverting binary trees, just shipping product.
+              1x founder 🏆. I quit DSA to build things people actually use. No
+              more inverting binary trees, just shipping product.
             </p>
 
             <p>
@@ -371,6 +370,36 @@ const Portfolio = () => {
           </div>
         </div>
 
+        {/* PRODUCTS */}
+        <div>
+          <h2 className="text-lg font-bold mb-4 mt-6 flex items-center gap-2 text-white">
+            <span className="w-2 h-2 bg-orange-500 rounded-full"></span>{" "}
+            Products
+          </h2>
+          <div className="text-sm">
+            <div className="text-neutral-500 mb-2">Closed</div>
+            <div className="pl-4 border-l border-neutral-800">
+              <div className="flex items-center justify-between group hover:bg-neutral-900/30 p-2 rounded transition-colors">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="font-medium text-sm text-neutral-100 hover:text-blue-400 cursor-pointer hover:underline underline-offset-4 decoration-dashed"
+                    onClick={() => window.open("https://renard.live", "_blank")}
+                  >
+                    Renard
+                  </span>
+                  <ExternalLink size={10} className="text-neutral-600" />
+                </div>
+                <span className="text-[10px] bg-neutral-900 text-neutral-500 px-1.5 py-0.5 rounded border border-neutral-800">
+                  Closed
+                </span>
+              </div>
+              <p className="text-xs text-neutral-400 pl-2">
+                Dev productivity platform centralizing LLM interactions.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 4. WRITING & CONNECT */}
         <div className="flex flex-col gap-6 pt-4 border-t border-neutral-900">
           <div className="flex items-center justify-between">
@@ -384,7 +413,8 @@ const Portfolio = () => {
               <Book size={14} /> Read Journal
             </button>
           </div>
-
+          <Achievements />
+          <StickerBoard />
           <ConnectWidgets />
         </div>
       </main>

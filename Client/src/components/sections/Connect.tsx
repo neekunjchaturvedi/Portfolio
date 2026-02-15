@@ -9,6 +9,14 @@ import {
   Clock,
 } from "lucide-react";
 
+import game from "@/assets/game.gif";
+
+declare global {
+  interface Window {
+    Cal: any;
+  }
+}
+
 const ConnectWidgets = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -145,6 +153,8 @@ const ConnectWidgets = () => {
             </a>
           ))}
         </div>
+
+        <img src={game} />
       </section>
 
       {/* MODAL OVERLAY */}

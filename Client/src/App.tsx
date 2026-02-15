@@ -1,18 +1,12 @@
 import { useState } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useParams,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, useParams, useNavigate } from "react-router-dom";
 
 import BlogPostView from "./components/sections/blogPostView";
-import Footer from "./components/sections/Footer";
 import { BLOG_POSTS } from "./components/sections/blogs";
 import MinimalBlogListSection from "./components/sections/blogsSection";
 import Portfolio from "./components/main-Portfolio";
 import "./App.css";
+import Footer from "./components/sections/Footer";
 
 /* ---------------- Blog Post Wrapper ---------------- */
 function BlogPostRoute() {
