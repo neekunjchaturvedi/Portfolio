@@ -13,6 +13,30 @@ import ConnectWidgets from "./sections/Connect";
 import { Typewriter } from "./sections/typewriter";
 import { Achievements, StickerBoard } from "./sections/achievements";
 
+const PRODUCTS = [
+  {
+    id: 1,
+    title: "Galade",
+    description: "Next gen security layer for AI agents.",
+    outcome:
+      "100+ registrations, but closed due to better alternatives and superior security infra in the market.",
+    githubUrl: "",
+    demoUrl: "https://galade.xyz",
+    status: "Closed",
+    tech: "AI/WebProxy",
+  },
+  {
+    id: 2,
+    title: "Renard",
+    description: "Dev productivity platform centralizing LLM interactions.",
+    outcome:
+      "50+ active users. Failed due to funding constraints and expensive AI infrastructure.",
+    githubUrl: "",
+    demoUrl: "https://renard.live",
+    status: "Closed",
+    tech: "AI/WEB",
+  },
+];
 const PROJECTS = [
   {
     id: 2,
@@ -23,15 +47,7 @@ const PROJECTS = [
     status: "Building",
     tech: "HFT/Redis",
   },
-  {
-    id: 7,
-    title: "Galade",
-    description: "Next gen security layer for AI agents.",
-    githubUrl: "",
-    demoUrl: "https://galade.xyz",
-    status: "Building",
-    tech: "AI/Web3",
-  },
+
   {
     id: 3,
     title: "Abuse CLI",
@@ -157,8 +173,9 @@ const Portfolio = () => {
             </p>
 
             <p className="border-l-2 border-white/20 pl-4 py-1 italic text-neutral-300 bg-neutral-900/30 rounded-r-lg">
-              1x founder 🏆. I quit DSA to build things people actually use. No
-              more inverting binary trees, just shipping product.
+              2x founder 🏆. I quit DSA to build great stuff and not stuck
+              remembering the patterns. Currently Engineering new patterns
+              in Tech.
             </p>
 
             <p>
@@ -371,31 +388,56 @@ const Portfolio = () => {
         </div>
 
         {/* PRODUCTS */}
+        {/* PRODUCTS */}
         <div>
           <h2 className="text-lg font-bold mb-4 mt-6 flex items-center gap-2 text-white">
             <span className="w-2 h-2 bg-orange-500 rounded-full"></span>{" "}
             Products
           </h2>
           <div className="text-sm">
-            <div className="text-neutral-500 mb-2">Closed</div>
-            <div className="pl-4 border-l border-neutral-800">
-              <div className="flex items-center justify-between group hover:bg-neutral-900/30 p-2 rounded transition-colors">
-                <div className="flex items-center gap-2">
-                  <span
-                    className="font-medium text-sm text-neutral-100 hover:text-blue-400 cursor-pointer hover:underline underline-offset-4 decoration-dashed"
-                    onClick={() => window.open("https://renard.live", "_blank")}
-                  >
-                    Renard
-                  </span>
-                  <ExternalLink size={10} className="text-neutral-600" />
+            <div className="pl-4 border-l border-neutral-800 space-y-4">
+              {PRODUCTS.map((product) => (
+                <div
+                  key={product.id}
+                  className="group hover:bg-neutral-900/30 p-2 rounded transition-colors -ml-2"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`font-medium text-sm text-neutral-100 ${
+                          product.demoUrl
+                            ? "hover:text-blue-400 cursor-pointer hover:underline underline-offset-4 decoration-dashed"
+                            : ""
+                        }`}
+                        onClick={() =>
+                          product.demoUrl &&
+                          window.open(product.demoUrl, "_blank")
+                        }
+                      >
+                        {product.title}
+                      </span>
+                      {product.demoUrl && (
+                        <ExternalLink size={10} className="text-neutral-600" />
+                      )}
+                    </div>
+                    <span className="text-[10px] bg-neutral-900 text-neutral-500 px-1.5 py-0.5 rounded border border-neutral-800">
+                      {product.status}
+                    </span>
+                  </div>
+
+                  {/* Primary Description */}
+                  <p className="text-xs text-neutral-400 pl-1 mb-2">
+                    {product.description}
+                  </p>
+
+                  {/* The "Story/Outcome" Description */}
+                  {product.outcome && (
+                    <p className="text-[11px] text-neutral-500 italic border-l-2 border-neutral-700/50 pl-2 py-0.5 ml-1 leading-relaxed">
+                      {product.outcome}
+                    </p>
+                  )}
                 </div>
-                <span className="text-[10px] bg-neutral-900 text-neutral-500 px-1.5 py-0.5 rounded border border-neutral-800">
-                  Closed
-                </span>
-              </div>
-              <p className="text-xs text-neutral-400 pl-2">
-                Dev productivity platform centralizing LLM interactions.
-              </p>
+              ))}
             </div>
           </div>
         </div>

@@ -129,12 +129,6 @@ export const Achievements = () => {
 
   const stats = [
     {
-      label: "Universal Rank",
-      value: "Top 2%", // Requires complex scraping, kept static or approximated
-      icon: <Trophy size={16} />,
-      color: "text-yellow-500",
-    },
-    {
       label: "Longest Streak",
       value: loading ? "..." : `${maxStreak} Days`,
       icon: <Flame size={16} />,
@@ -146,12 +140,7 @@ export const Achievements = () => {
       icon: <GitCommit size={16} />,
       color: "text-pink-500",
     },
-    {
-      label: "Most Active Month",
-      value: loading ? "..." : bestMonth,
-      icon: <CalIcon size={16} />,
-      color: "text-purple-500",
-    },
+
     {
       label: "Most Active Day",
       value: loading ? "..." : bestDay,
